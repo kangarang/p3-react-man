@@ -6,9 +6,8 @@ import ZeroZero from './ZeroZero'
 class App extends Component {
 
   constructor(props) {
-    super(props)
+    super(props);
     this.state = {
-      // earth, bomberman, bomb, drop, carry, fire, crate, wall
       zeroEight: "earth",
       oneEight: "earth",
       twoEight: "earth",
@@ -89,7 +88,7 @@ class App extends Component {
       sevenOne: "wall",
       eightOne: "earth",
 
-      zeroZero: "bomberman",
+      zeroZero: "bomberwoman",
       oneZero: "earth",
       twoZero: "earth",
       threeZero: "earth",
@@ -97,14 +96,13 @@ class App extends Component {
       fiveZero: "earth",
       sixZero: "earth",
       sevenZero: "earth",
-      eightZero: "earth"
+      eightZero: "bomberman"
     }
   }
 
   // let bX = 0
   // let bY = 0
   // bomberman = (bX, bY)
-
 
   // function move(bX, bY, ) {
   //   this.setState({
@@ -117,75 +115,127 @@ class App extends Component {
   }
 
   handleKeyDown(e) {
-    e.preventDefault()
-    let arr = []
-    let prePos
-    let postPos
-    let obj = {}
-    let oldMan
+    e.preventDefault();
     // push objects
     const coords = [
-      {x: 0, y: 8}, {x: 1, y: 8}, {x: 2, y: 8}, {x: 3, y: 8}, {x: 4, y: 8}, {x: 5, y: 8}, {x: 6, y: 8}, {x: 7, y: 8}, {x: 8, y: 8}, {x: 0, y: 7}, {x: 1, y: 7}, {x: 2, y: 7}, {x: 3, y: 7}, {x: 4, y: 7}, {x: 5, y: 7}, {x: 6, y: 7}, {x: 7, y: 7}, {x: 8, y: 7}, {x: 0, y: 6}, {x: 1, y: 6}, {x: 2, y: 6}, {x: 3, y: 6}, {x: 4, y: 6}, {x: 5, y: 6}, {x: 6, y: 6}, {x: 7, y: 6}, {x: 8, y: 6}, {x: 0, y: 5}, {x: 1, y: 5}, {x: 2, y: 5}, {x: 3, y: 5}, {x: 4, y: 5}, {x: 5, y: 5}, {x: 6, y: 5}, {x: 7, y: 5}, {x: 8, y: 5}, {x: 0, y: 4}, {x: 1, y: 4}, {x: 2, y: 4}, {x: 3, y: 4}, {x: 4, y: 4}, {x: 5, y: 4}, {x: 6, y: 4}, {x: 7, y: 4}, {x: 8, y: 4}, {x: 0, y: 3}, {x: 1, y: 3}, {x: 2, y: 3}, {x: 3, y: 3}, {x: 4, y: 3}, {x: 5, y: 3}, {x: 6, y: 3}, {x: 7, y: 3}, {x: 8, y: 3}, {x: 0, y: 2}, {x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2}, {x: 4, y: 2}, {x: 5, y: 2}, {x: 6, y: 2}, {x: 7, y: 2}, {x: 8, y: 2}, {x: 0, y: 1}, {x: 1, y: 1}, {x: 2, y: 1}, {x: 3, y: 1}, {x: 4, y: 1}, {x: 5, y: 1}, {x: 6, y: 1}, {x: 7, y: 1}, {x: 8, y: 1}, {x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0}, {x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}]
+      {x: 0, y: 8}, {x: 1, y: 8}, {x: 2, y: 8}, {x: 3, y: 8}, {x: 4, y: 8}, {x: 5, y: 8}, {x: 6, y: 8}, {x: 7, y: 8}, {x: 8, y: 8},
+
+      {x: 0, y: 7}, {x: 1, y: 7}, {x: 2, y: 7}, {x: 3, y: 7}, {x: 4, y: 7}, {x: 5, y: 7}, {x: 6, y: 7}, {x: 7, y: 7}, {x: 8, y: 7},
+
+      {x: 0, y: 6}, {x: 1, y: 6}, {x: 2, y: 6}, {x: 3, y: 6}, {x: 4, y: 6}, {x: 5, y: 6}, {x: 6, y: 6}, {x: 7, y: 6}, {x: 8, y: 6},
+
+      {x: 0, y: 5}, {x: 1, y: 5}, {x: 2, y: 5}, {x: 3, y: 5}, {x: 4, y: 5}, {x: 5, y: 5}, {x: 6, y: 5}, {x: 7, y: 5}, {x: 8, y: 5},
+
+      {x: 0, y: 4}, {x: 1, y: 4}, {x: 2, y: 4}, {x: 3, y: 4}, {x: 4, y: 4}, {x: 5, y: 4}, {x: 6, y: 4}, {x: 7, y: 4}, {x: 8, y: 4},
+
+      {x: 0, y: 3}, {x: 1, y: 3}, {x: 2, y: 3}, {x: 3, y: 3}, {x: 4, y: 3}, {x: 5, y: 3}, {x: 6, y: 3}, {x: 7, y: 3}, {x: 8, y: 3},
+
+      {x: 0, y: 2}, {x: 1, y: 2}, {x: 2, y: 2}, {x: 3, y: 2}, {x: 4, y: 2}, {x: 5, y: 2}, {x: 6, y: 2}, {x: 7, y: 2}, {x: 8, y: 2},
+
+      {x: 0, y: 1}, {x: 1, y: 1}, {x: 2, y: 1}, {x: 3, y: 1}, {x: 4, y: 1}, {x: 5, y: 1}, {x: 6, y: 1}, {x: 7, y: 1}, {x: 8, y: 1},
+
+      {x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0}, {x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}]
 
     const wordArray = [
       'zeroEight', 'oneEight', 'twoEight', 'threeEight', 'fourEight', 'fiveEight', 'sixEight', 'sevenEight', 'eightEight',
+
       'zeroSeven', 'oneSeven', 'twoSeven', 'threeSeven', 'fourSeven', 'fiveSeven', 'sixSeven', 'sevenSeven', 'eightSeven',
+
       'zeroSix', 'oneSix', 'twoSix', 'threeSix', 'fourSix', 'fiveSix', 'sixSix', 'sevenSix', 'eightSix',
+
       'zeroFive', 'oneFive', 'twoFive', 'threeFive', 'fourFive', 'fiveFive', 'sixFive', 'sevenFive', 'eightFive',
+
       'zeroFour', 'oneFour', 'twoFour', 'threeFour', 'fourFour', 'fiveFour', 'sixFour', 'sevenFour', 'eightFour',
+
       'zeroThree', 'oneThree', 'twoThree', 'threeThree', 'fourThree', 'fiveThree', 'sixThree', 'sevenThree', 'eightThree',
+
       'zeroTwo', 'oneTwo', 'twoTwo', 'threeTwo', 'fourTwo', 'fiveTwo', 'sixTwo', 'sevenTwo', 'eightTwo',
+
       'zeroOne', 'oneOne', 'twoOne', 'threeOne', 'fourOne', 'fiveOne', 'sixOne', 'sevenOne', 'eightOne',
+
       'zeroZero', 'oneZero', 'twoZero', 'threeZero', 'fourZero', 'fiveZero', 'sixZero', 'sevenZero', 'eightZero'
     ]
 
-    let stateObj = this.state
-
+    let stateObj = this.state;
+    let arr = [];
     for (let key in stateObj) {
       if (stateObj.hasOwnProperty(key)) {
-        arr.push(stateObj[key])
+        arr.push(stateObj[key]);
       }
     }
-    oldMan = arr.indexOf("bomberman");
 
-    let oldManObj = coords[oldMan]
+    let isMale
+    let oldManIndex
+    let oldManObj
+    let newManObj
+    let locOfOther
 
-    let newManObj = {x: oldManObj.x, y: oldManObj.y}
-    let indexOfNewMan
-
-    if (e.keyCode === 37) {
-      newManObj.x --
-    } else if (e.keyCode === 38) {
-      newManObj.y ++
-    } else if (e.keyCode === 39) {
-      newManObj.x ++
-    } else if (e.keyCode === 40) {
-      newManObj.y --
+    if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40) {
+      isMale = true
+      oldManIndex = arr.indexOf("bomberman");
+      oldManObj = coords[oldManIndex];
+      newManObj = {x: oldManObj.x, y: oldManObj.y};
+      locOfOther = arr.indexOf("bomberwoman");
+      if (e.keyCode === 37) {
+        newManObj.x --;
+      } else if (e.keyCode === 38) {
+        newManObj.y ++;
+      } else if (e.keyCode === 39) {
+        newManObj.x ++;
+      } else if (e.keyCode === 40) {
+        newManObj.y --;
+      }
     } else {
-      return
+      isMale = false
+      oldManIndex = arr.indexOf("bomberwoman");
+      oldManObj = coords[oldManIndex];
+      newManObj = {x: oldManObj.x, y: oldManObj.y};
+      locOfOther = arr.indexOf("bomberman");
+
+      if (e.keyCode === 65) {
+        newManObj.x --;
+      } else if (e.keyCode === 87) {
+        newManObj.y ++;
+      } else if (e.keyCode === 68) {
+        newManObj.x ++;
+      } else if (e.keyCode === 83) {
+        newManObj.y --;
+      }
     }
 
-    if (newManObj.x % 2 !== 0 && newManObj.y % 2 !== 0) {
-      return
-    } else if (newManObj.x < 0 || newManObj.y > 8 || newManObj.x > 8 || newManObj.y < 0) {
-      return
-    }
+
+    let indexOfNewMan
 
     for (let i = 0; i < coords.length; i ++) {
       if (coords[i].x === newManObj.x && coords[i].y === newManObj.y) {
-        indexOfNewMan = i
+        indexOfNewMan = i;
       }
     }
 
-    prePos = wordArray[oldMan]
-    postPos = wordArray[indexOfNewMan]
+    if (newManObj.x % 2 !== 0 && newManObj.y % 2 !== 0) {
+      return;
+    } else if (newManObj.x < 0 || newManObj.y > 8 || newManObj.x > 8 || newManObj.y < 0) {
+      return;
+    } else if (indexOfNewMan === locOfOther) {
+      return;
+    }
 
-    let firstElement = "earth"
-    let secondElement = "bomberman"
+    let obj = {};
+    let prePos = wordArray[oldManIndex];
+    let postPos = wordArray[indexOfNewMan];
+    let firstElement = "earth";
 
-    obj[prePos] = firstElement
-    obj[postPos] = secondElement
-    this.setState(obj)
+    let secondElement
+    if (isMale === true) {
+      secondElement = "bomberman"
+    } else {
+      secondElement = "bomberwoman"
+    }
+
+    obj[prePos] = firstElement;
+    obj[postPos] = secondElement;
+
+    this.setState(obj);
   }
 
   render() {

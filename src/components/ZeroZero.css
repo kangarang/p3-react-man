@@ -8,7 +8,12 @@
 .bomberman {
   height: 100%;
   width: 100%;
-  background-color: black;
+  background-color: blue;
+}
+.bomberwoman {
+  height: 100%;
+  width: 100%;
+  background-color: pink;
 }
 
 .earth {
@@ -20,4 +25,29 @@
   height: 100%;
   width: 100%;
   background-color: grey;
+}
+.bomb {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+.fire {
+  height: 100%;
+  width: 100%;
+  background-color: red;
+}
+.drop {
+  height: 100%;
+  width: 100%;
+  background-color: purple;
+}
+.carry {
+  height: 100%;
+  width: 100%;
+  background-color: yellow;
+}
+.crate {
+  height: 100%;
+  width: 100%;
+  background-color: beige;
 }
