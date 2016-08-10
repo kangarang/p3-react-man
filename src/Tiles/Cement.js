@@ -12,8 +12,7 @@ class Cement extends Component {
   render(){
     return(
       <div className="cement">
-        {this.props.position}
-        {this.isPlayer(this.props.position, this.props.coords)}
+        {this.props.position} {/*renders tile position for my own testing purpose*/}
       </div>
     )
   }

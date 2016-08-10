@@ -2,7 +2,7 @@ const handleKeyDown = function(event, x, y){
     event.preventDefault();
     switch (event.code){
       case "ArrowDown":
-        if (y > 1){
+        else if (y > 1){
           this.setState({playerOneY: y - 1});
         }
         break;
