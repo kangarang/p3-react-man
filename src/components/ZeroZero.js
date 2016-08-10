@@ -2,21 +2,20 @@ import React, { Component } from 'react';
 import './ZeroZero.css';
 
 class ZeroZero extends Component {
-  // earth, bomberman, bomberwoman, bomb, drop, carry, fire, crate, wall
 
   color() {
     if (this.props.visual === "bomberman") {
-      return <div className="bomberman"></div>
+      return <div className="bomberman"><img role="presentation" className="icon" src="http://icons.iconarchive.com/icons/yellowicon/game-stars/128/Bomberman-icon.png"></img></div>
     } else if (this.props.visual === "earth") {
       return <div className="earth"></div>
     } else if (this.props.visual === "wall") {
-      return <div className="wall"></div>
+      return <div className="wall"><img role='presentation' className='icon' src="https://cdn0.iconfinder.com/data/icons/city-space-1/512/brick_wall-512.png"></img></div>
     } else if (this.props.visual === "bomberwoman") {
       return <div className="bomberwoman"></div>
     } else if (this.props.visual === "bomb") {
-      return <div className="bomb"></div>
+      return <div className="bomb"><img role='presentation' className='icon' src="http://icdn.pro/images/en/e/x/explosive-bombs-icone-5950-128.png"></img></div>
     } else if (this.props.visual === "drop") {
-      return <div className="drop"></div>
+      return <div className="drop"><img role="presentation" className="icon" src="http://d2.alternativeto.net/dist/icons/game-of-bombs_90024.png?width=64&height=64&mode=crop&upscale=false"></img></div>
     } else if (this.props.visual === "carry") {
       return <div className="carry"></div>
     } else if (this.props.visual === "fire") {

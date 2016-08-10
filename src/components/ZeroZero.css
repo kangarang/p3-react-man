@@ -8,7 +8,7 @@
 .bomberman {
   height: 100%;
   width: 100%;
-  background-color: blue;
+  background-color: green;
 }
 .bomberwoman {
   height: 100%;
@@ -50,4 +50,9 @@
   height: 100%;
   width: 100%;
   background-color: beige;
+}
+
+.icon {
+  height: 100%;
+  width: 100%;
 }

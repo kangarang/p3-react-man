@@ -117,7 +117,7 @@ class App extends Component {
   handleKeyDown(e) {
     e.preventDefault();
     // push objects
-    const coords = [
+    const Coords = [
       {x: 0, y: 8}, {x: 1, y: 8}, {x: 2, y: 8}, {x: 3, y: 8}, {x: 4, y: 8}, {x: 5, y: 8}, {x: 6, y: 8}, {x: 7, y: 8}, {x: 8, y: 8},
 
       {x: 0, y: 7}, {x: 1, y: 7}, {x: 2, y: 7}, {x: 3, y: 7}, {x: 4, y: 7}, {x: 5, y: 7}, {x: 6, y: 7}, {x: 7, y: 7}, {x: 8, y: 7},
@@ -136,7 +136,8 @@ class App extends Component {
 
       {x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0}, {x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}]
 
-    const wordArray = [
+
+    const WordArray = [
       'zeroEight', 'oneEight', 'twoEight', 'threeEight', 'fourEight', 'fiveEight', 'sixEight', 'sevenEight', 'eightEight',
 
       'zeroSeven', 'oneSeven', 'twoSeven', 'threeSeven', 'fourSeven', 'fiveSeven', 'sixSeven', 'sevenSeven', 'eightSeven',
@@ -158,6 +159,8 @@ class App extends Component {
 
     let stateObj = this.state;
     let arr = [];
+
+
     for (let key in stateObj) {
       if (stateObj.hasOwnProperty(key)) {
         arr.push(stateObj[key]);
@@ -165,75 +168,81 @@ class App extends Component {
     }
 
     let isMale
-    let oldManIndex
-    let oldManObj
-    let newManObj
-    let locOfOther
+    let drop = "";
+    let oldIndex;
+    let oldObj;
+    let newObj;
+    let locOfOther;
 
-    if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40) {
+    if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40 || e.keyCode === 18) {
       isMale = true
-      oldManIndex = arr.indexOf("bomberman");
-      oldManObj = coords[oldManIndex];
-      newManObj = {x: oldManObj.x, y: oldManObj.y};
+      oldIndex = arr.indexOf("bomberman");
       locOfOther = arr.indexOf("bomberwoman");
-      if (e.keyCode === 37) {
-        newManObj.x --;
-      } else if (e.keyCode === 38) {
-        newManObj.y ++;
-      } else if (e.keyCode === 39) {
-        newManObj.x ++;
-      } else if (e.keyCode === 40) {
-        newManObj.y --;
-      }
-    } else {
+    } else if (e.keyCode === 87 || e.keyCode === 68 || e.keyCode === 83 || e.keyCode === 69 || e.keyCode === 65) {
       isMale = false
-      oldManIndex = arr.indexOf("bomberwoman");
-      oldManObj = coords[oldManIndex];
-      newManObj = {x: oldManObj.x, y: oldManObj.y};
+      oldIndex = arr.indexOf("bomberwoman");
       locOfOther = arr.indexOf("bomberman");
+    } else {
+      return
+    }
 
-      if (e.keyCode === 65) {
-        newManObj.x --;
-      } else if (e.keyCode === 87) {
-        newManObj.y ++;
-      } else if (e.keyCode === 68) {
-        newManObj.x ++;
-      } else if (e.keyCode === 83) {
-        newManObj.y --;
-      }
+    console.log(e.keyCode);
+
+    oldObj = Coords[oldIndex];
+    newObj = {x: oldObj.x, y: oldObj.y};
+    if (e.keyCode === 37 || e.keyCode === 65) {
+      newObj.x --;
+    } else if (e.keyCode === 38 || e.keyCode === 87) {
+      newObj.y ++;
+    } else if (e.keyCode === 39 || e.keyCode === 68) {
+      newObj.x ++;
+    } else if (e.keyCode === 40 || e.keyCode === 83) {
+      newObj.y --;
+    } else if (e.keyCode === 18 || e.keyCode === 69) {
+      drop = true;
     }
 
 
-    let indexOfNewMan
+    let newIndex
 
-    for (let i = 0; i < coords.length; i ++) {
-      if (coords[i].x === newManObj.x && coords[i].y === newManObj.y) {
-        indexOfNewMan = i;
+    for (let i = 0; i < Coords.length; i ++) {
+      if (Coords[i].x === newObj.x && Coords[i].y === newObj.y) {
+        newIndex = i;
       }
     }
 
-    if (newManObj.x % 2 !== 0 && newManObj.y % 2 !== 0) {
+    if (newObj.x % 2 !== 0 && newObj.y % 2 !== 0) {
       return;
-    } else if (newManObj.x < 0 || newManObj.y > 8 || newManObj.x > 8 || newManObj.y < 0) {
+    } else if (newObj.x < 0 || newObj.y > 8 || newObj.x > 8 || newObj.y < 0) {
       return;
-    } else if (indexOfNewMan === locOfOther) {
+    } else if (newIndex === locOfOther) {
       return;
     }
 
     let obj = {};
-    let prePos = wordArray[oldManIndex];
-    let postPos = wordArray[indexOfNewMan];
-    let firstElement = "earth";
+    let prePos = WordArray[oldIndex];
+    let postPos = WordArray[newIndex];
 
-    let secondElement
+    let firstElement = "earth";
+    let secondElement;
+
+
+
     if (isMale === true) {
       secondElement = "bomberman"
     } else {
       secondElement = "bomberwoman"
     }
+    if (drop === true) {
+      firstElement = "drop"
+      // secondElement = "bomberman"
+      obj[prePos] = firstElement;
+      this.setState(obj);
+
+    }
 
     obj[prePos] = firstElement;
-    obj[postPos] = secondElement;
+    // obj[postPos] = secondElement;
 
     this.setState(obj);
   }
