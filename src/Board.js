@@ -50,7 +50,7 @@ class Board extends Component {
         }
         break;
       default:
-      console.log("derpington");
+      console.log("derp");
       }
   };
 
