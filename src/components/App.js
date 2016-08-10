@@ -112,12 +112,6 @@ class App extends Component {
   //   })
   // }
 
-  // const bomberman;
-  // const earth;
-  // const bomb;
-  // const crate;
-  // const fire;
-
   componentDidMount = () => {
     window.addEventListener("keydown", this.handleKeyDown.bind(this));
   }
@@ -156,13 +150,8 @@ class App extends Component {
 
     let oldManObj = coords[oldMan]
 
-
-
     let newManObj = {x: oldManObj.x, y: oldManObj.y}
     let indexOfNewMan
-
-
-
 
     if (e.keyCode === 37) {
       newManObj.x --
@@ -176,7 +165,9 @@ class App extends Component {
       return
     }
 
-    if (newManObj.x % 2 != 0 && newManObj.y % 2 != 0) {
+    if (newManObj.x % 2 !== 0 && newManObj.y % 2 !== 0) {
+      return
+    } else if (newManObj.x < 0 || newManObj.y > 8 || newManObj.x > 8 || newManObj.y < 0) {
       return
     }
 
