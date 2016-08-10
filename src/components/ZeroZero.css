@@ -1,0 +1,23 @@
+.ZeroZero {
+  height: 10%;
+  width: 10%;
+  border: 1px solid black;
+  float: left;
+}
+
+.bomberman {
+  height: 100%;
+  width: 100%;
+  background-color: black;
+}
+
+.earth {
+  height: 100%;
+  width: 100%;
+  background-color: green;
+}
+.wall {
+  height: 100%;
+  width: 100%;
+  background-color: grey;
+}
