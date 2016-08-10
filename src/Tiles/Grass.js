@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import '../Board.css'
 
 class Grass extends Component {
-
   isPlayer(comp, player) {
     if (comp[0] === player[0] && comp[1] === player[1]){
       return <div className="dot"> </div>
@@ -12,8 +11,8 @@ class Grass extends Component {
   render(){
     return(
       <div className="grass">
-        {this.props.position} //renders tile position for my own testing purpose
-        {this.isPlayer(this.props.position, this.props.coords)} //renders player position
+        {this.props.position} {/*renders tile position for my own testing purpose*/}
+        {this.isPlayer(this.props.position, this.props.coords)} {/*renders player position*/}
       </div>
     )
   }
