@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
 import './App.css';
 import ZeroZero from './ZeroZero'
-// import oneZero from './oneZero'
 
 class App extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
@@ -88,7 +86,7 @@ class App extends Component {
       sevenOne: "wall",
       eightOne: "earth",
 
-      zeroZero: "bomberwoman",
+      zeroZero: "woman",
       oneZero: "earth",
       twoZero: "earth",
       threeZero: "earth",
@@ -96,19 +94,9 @@ class App extends Component {
       fiveZero: "earth",
       sixZero: "earth",
       sevenZero: "earth",
-      eightZero: "bomberman"
+      eightZero: "man"
     }
   }
-
-  // let bX = 0
-  // let bY = 0
-  // bomberman = (bX, bY)
-
-  // function move(bX, bY, ) {
-  //   this.setState({
-  //     visual: bomberman
-  //   })
-  // }
 
   componentDidMount = () => {
     window.addEventListener("keydown", this.handleKeyDown.bind(this));
@@ -116,7 +104,8 @@ class App extends Component {
 
   handleKeyDown(e) {
     e.preventDefault();
-    // push objects
+    console.log(e.keyCode);
+    console.log("justDropped", justDropped);
     const Coords = [
       {x: 0, y: 8}, {x: 1, y: 8}, {x: 2, y: 8}, {x: 3, y: 8}, {x: 4, y: 8}, {x: 5, y: 8}, {x: 6, y: 8}, {x: 7, y: 8}, {x: 8, y: 8},
 
@@ -135,7 +124,6 @@ class App extends Component {
       {x: 0, y: 1}, {x: 1, y: 1}, {x: 2, y: 1}, {x: 3, y: 1}, {x: 4, y: 1}, {x: 5, y: 1}, {x: 6, y: 1}, {x: 7, y: 1}, {x: 8, y: 1},
 
       {x: 0, y: 0}, {x: 1, y: 0}, {x: 2, y: 0}, {x: 3, y: 0}, {x: 4, y: 0}, {x: 5, y: 0}, {x: 6, y: 0}, {x: 7, y: 0}, {x: 8, y: 0}]
-
 
     const WordArray = [
       'zeroEight', 'oneEight', 'twoEight', 'threeEight', 'fourEight', 'fiveEight', 'sixEight', 'sevenEight', 'eightEight',
@@ -156,96 +144,173 @@ class App extends Component {
 
       'zeroZero', 'oneZero', 'twoZero', 'threeZero', 'fourZero', 'fiveZero', 'sixZero', 'sevenZero', 'eightZero'
     ]
-
-    let stateObj = this.state;
+    const App = this
     let arr = [];
-
-
-    for (let key in stateObj) {
-      if (stateObj.hasOwnProperty(key)) {
-        arr.push(stateObj[key]);
-      }
-    }
-
-    let isMale
-    let drop = "";
+    let stateObj = this.state;
+    let isMale;
+    let justDropped = false
+    let bombTimerID;
     let oldIndex;
-    let oldObj;
-    let newObj;
+    let oldObj
+    let newObj
     let locOfOther;
+    let newIndex;
+    let obj = {};
+    let prePos;
+    let postPos;
+    let oldElement;
+    let newElement;
+    console.log("justDropped",justDropped);
+    makeArray(arr, testKey)
 
-    if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40 || e.keyCode === 18) {
-      isMale = true
-      oldIndex = arr.indexOf("bomberman");
-      locOfOther = arr.indexOf("bomberwoman");
-    } else if (e.keyCode === 87 || e.keyCode === 68 || e.keyCode === 83 || e.keyCode === 69 || e.keyCode === 65) {
-      isMale = false
-      oldIndex = arr.indexOf("bomberwoman");
-      locOfOther = arr.indexOf("bomberman");
-    } else {
-      return
-    }
-
-    console.log(e.keyCode);
-
-    oldObj = Coords[oldIndex];
-    newObj = {x: oldObj.x, y: oldObj.y};
-    if (e.keyCode === 37 || e.keyCode === 65) {
-      newObj.x --;
-    } else if (e.keyCode === 38 || e.keyCode === 87) {
-      newObj.y ++;
-    } else if (e.keyCode === 39 || e.keyCode === 68) {
-      newObj.x ++;
-    } else if (e.keyCode === 40 || e.keyCode === 83) {
-      newObj.y --;
-    } else if (e.keyCode === 18 || e.keyCode === 69) {
-      drop = true;
-    }
-
-
-    let newIndex
-
-    for (let i = 0; i < Coords.length; i ++) {
-      if (Coords[i].x === newObj.x && Coords[i].y === newObj.y) {
-        newIndex = i;
+    function makeArray(arr, testKey) {
+      for (let key in stateObj) {
+        if (stateObj.hasOwnProperty(key)) {
+          arr.push(stateObj[key]);
+        }
+      }
+      if (arr.length) {
+        testKey()
       }
     }
 
-    if (newObj.x % 2 !== 0 && newObj.y % 2 !== 0) {
-      return;
-    } else if (newObj.x < 0 || newObj.y > 8 || newObj.x > 8 || newObj.y < 0) {
-      return;
-    } else if (newIndex === locOfOther) {
-      return;
-    }
+    function testKey() {
+      if (e.keyCode === 37 || e.keyCode === 38 || e.keyCode === 39 || e.keyCode === 40 || e.keyCode === 18) {
+        isMale = true
+        oldIndex = arr.indexOf("man");
+        oldObj = Coords[oldIndex];
+        locOfOther = arr.indexOf("woman");
+      } else if (e.keyCode === 87 || e.keyCode === 68 || e.keyCode === 83 || e.keyCode === 69 || e.keyCode === 65) {
+        isMale = false
+        oldIndex = arr.indexOf("woman");
+        oldObj = Coords[oldIndex];
+        locOfOther = arr.indexOf("man");
+      } else {
+        return
+      }
 
-    let obj = {};
-    let prePos = WordArray[oldIndex];
-    let postPos = WordArray[newIndex];
-
-    let firstElement = "earth";
-    let secondElement;
-
-
-
-    if (isMale === true) {
-      secondElement = "bomberman"
-    } else {
-      secondElement = "bomberwoman"
-    }
-    if (drop === true) {
-      firstElement = "drop"
-      // secondElement = "bomberman"
-      obj[prePos] = firstElement;
-      this.setState(obj);
+      if ((e.keyCode === 18 || e.keyCode === 69) && (justDropped === true)) {
+        justDropped = false;
+        standingOnBomb()
+      } else {
+        newObject()
+      }
 
     }
 
-    obj[prePos] = firstElement;
-    // obj[postPos] = secondElement;
+    function standingOnBomb() {
+      oldIndex = arr.indexOf('bombAndMan')
+      console.log("fds".oldIndex);
+      oldObj = Coords[oldIndex]
+      if (oldIndex === arr.indexOf('bombAndMan')) {
+        console.log("201");
+        newObject()
+      }
+    }
 
-    this.setState(obj);
-  }
+    function newObject() {
+      console.log("207");
+      newObj = {x: oldObj.x, y: oldObj.y};
+      if (e.keyCode === 37 || e.keyCode === 65) {
+        newObj.x --;
+      } else if (e.keyCode === 38 || e.keyCode === 87) {
+        newObj.y ++;
+      } else if (e.keyCode === 39 || e.keyCode === 68) {
+        newObj.x ++;
+      } else if (e.keyCode === 40 || e.keyCode === 83) {
+        newObj.y --;
+      } else if ((e.keyCode === 18 || e.keyCode === 69) && (justDropped === false)) {
+        justDropped = true;
+        oldIndex = arr.indexOf("bombAndMan")
+        console.log("220");
+        bombTimerID = window.setTimeout(bombTimer, 3000)
+        console.log("im here");
+      } else {
+        return
+      }
+
+      console.log("old", oldObj);
+      console.log("new", newObj);
+
+      if (newObj) {
+        findNewIndex()
+        console.log("234",justDropped);
+      }
+    }
+
+    function bombTimer() {
+      console.log("oldObj", oldObj);
+      console.log("KABOOM!");
+      // justDropped = false;
+      // change state - UI
+      clearTimer()
+    }
+
+    function clearTimer() {
+      console.log("cleared");
+      window.clearTimeout(bombTimerID)
+    }
+
+    function findNewIndex() {
+      for (let i = 0; i < Coords.length; i ++) {
+        if (Coords[i].x === newObj.x && Coords[i].y === newObj.y) {
+          newIndex = i;
+        }
+      }
+      if (newIndex) {
+        test()
+      }
+    }
+
+    function test() {
+      if (newObj.x % 2 !== 0 && newObj.y % 2 !== 0) {
+        return;
+      } else if (newObj.x < 0 || newObj.y > 8 || newObj.x > 8 || newObj.y < 0) {
+        return;
+      } else if (newIndex === locOfOther) {
+        return;
+      } else {
+        manOrWoman()
+      }
+    }
+
+    function manOrWoman() {
+      if (isMale === true) {
+        oldElement = "earth";
+        newElement = "man"
+      } else {
+        oldElement = "earth";
+        newElement = "woman"
+      }
+      if (oldElement && newElement) {
+        checkIfBombExists()
+      }
+    }
+
+    function checkIfBombExists() {
+      if (justDropped === true) {
+        newElement = "bombAndMan"
+        settingState()
+      } else if (justDropped === false) {
+        settingState()
+      } else {
+        settingState()
+      }
+    }
+
+    function settingState() {
+      prePos = WordArray[oldIndex];
+      postPos = WordArray[newIndex];
+      console.log(prePos, postPos);
+      obj[prePos] = oldElement;
+      obj[postPos] = newElement;
+      App.setState(obj)
+    }
+
+  } // end handleKeyDown fn
+
+
+
 
   render() {
     return (

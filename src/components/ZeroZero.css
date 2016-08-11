@@ -5,12 +5,12 @@
   float: left;
 }
 
-.bomberman {
+.man {
   height: 100%;
   width: 100%;
   background-color: green;
 }
-.bomberwoman {
+.woman {
   height: 100%;
   width: 100%;
   background-color: pink;
@@ -36,10 +36,10 @@
   width: 100%;
   background-color: red;
 }
-.drop {
+.bombAndMan {
   height: 100%;
   width: 100%;
-  background-color: purple;
+  background-color: green;
 }
 .carry {
   height: 100%;
