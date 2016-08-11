@@ -17,13 +17,13 @@ class TileContainer extends Component {
       }
     })
     return block
-  };
+  }; // Renders board depending on state of the game board. Uses single purpose stateless functions to render.
 
   render(){
     console.log(this.props.tiles);
     return(
       <div className="tileContainer">{this.props.tiles.length ? this.renderBoard() : null}</div>
-    )
+    ) //If board had length(tile func has completed), render board.
   };
 
 }

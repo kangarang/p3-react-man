@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-// import Grass from './Tiles/Grass.js';
-// import Cement from './Tiles/Cement.js';
-// import movement from './utils/Movement.js';
 import createTiles from './utils/CreateTiles.js';
 import TileContainer from './TileContainer.js';
+import movement from './utils/Movement.js';
 import './Board.css';
 
 class Board extends Component {
@@ -12,25 +10,30 @@ class Board extends Component {
     this.state = {
       tiles: []
     }
-  }; //End Board, here is where player coords are changed, thus rendering components with player or not
+  };
 
   handleKeyDown(event){
-    console.log(event);
-    // if (movement(event, this.state.playerOneX, this.state.playerOneY)){
-    //   this.setState(movement(event, this.state.playerOneX, this.state.playerOneY, this.state.crates));
+    // const position = this.state.tiles.filter(tile => tile.playerOne === true);
+    // const newPosition = movement(event, position[0]);
+    // const atPosition = this.state.tiles.filter(tile => tile.x === newPosition[0] && tile.y === newPosition[1])
+    // if (this.state.tiles.indexOf(atPosition[0])){
+    //   this.state.tiles[this.state.tiles.indexOf(atPosition[0])]
+    // };
+    // if (atPosition) {
+    //   this.setState
     // }
   };
 
   componentDidMount(){
     window.addEventListener('keydown', this.handleKeyDown.bind(this))
     this.setState({tiles: createTiles()});
-  }; //Adds listener when component mounts
+  }; //Adds event listener and setsState of gameboard
 
   render(){
     return(
       <TileContainer tiles={this.state.tiles} />
     )
-  }; //Renders (duh) the key here is that the component is the same BUT coords identify WHICH
+  }; //Container worried about one state that changes based on user input.
 }
 
 export default Board;

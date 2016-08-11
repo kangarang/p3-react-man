@@ -1,41 +1,23 @@
-const movement = function(event, currentX, currentY, crates){
+const movement = function(event, position){
     event.preventDefault();
+    let x = position.x;
+    let y = position.y;
     switch (event.code){
       case "ArrowDown":
-        if ((currentY-1)%2 === 0 && currentX%2 === 0 ){
-          return {playerOneY: currentY, playerOneX: currentX};
-        }
-        else if (currentY > 1){
-          return {playerOneY: currentY - 1, playerOneX: currentX};
-        }
+        y--
         break;
       case "ArrowUp":
-        if ((currentY+1)%2 === 0 && currentX%2 === 0 ){
-          return {playerOneY: currentY, playerOneX: currentX};
-        }
-        else if (currentY < 9){
-          return {playerOneY: currentY + 1, playerOneX: currentX};
-        }
+        y++
         break;
       case "ArrowLeft":
-        if ((currentX-1)%2 === 0 && currentY%2 === 0 ){
-          return {playerOneY: currentY, playerOneX: currentX};
-        }
-        else if (currentX > 1){
-          return {playerOneY: currentY, playerOneX: currentX - 1};
-        }
+        x--
         break;
       case "ArrowRight":
-        if ((currentX+1)%2 === 0 && currentY%2 === 0 ){
-          return {playerOneY: currentY, playerOneX: currentX};
-        }
-        else if (currentX < 9){
-          return {playerOneY: currentY, playerOneX: currentX + 1};
-        }
+        x++
         break;
       default:
-        return
       }
+    return [x,y];
   };
 
 module.exports = movement;
