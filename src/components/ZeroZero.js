@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import './ZeroZero.css';
+import help from '../utils/helpers.js'
 
 class ZeroZero extends Component {
 
   color() {
     const vis = this.props.visual
-    this.props.locate(vis)
     if (vis === "man") {
+      console.log(help.getFromHelper())
+      this.props.locate(vis)
       return <div className="man"><img role="presentation" className="icon" src="http://icons.iconarchive.com/icons/yellowicon/game-stars/128/Bomberman-icon.png"></img></div>
     } else if (vis === "earth") {
       return <div className="earth"></div>
@@ -15,6 +17,8 @@ class ZeroZero extends Component {
     } else if (vis === "woman") {
       return <div className="woman"></div>
     } else if (vis === "bomb") {
+      console.log(help.getFromHelper())
+      this.props.locate(vis)
       return <div className="bomb"><img role='presentation' className="icon" src="https://www.iconfinder.com/icons/1232/bomb_explosive_icon#size=128"></img></div>
     } else if (vis === "bombAndMan") {
       return <div className="bombAndMan"><img role="presentation" className="icon" src="http://d2.alternativeto.net/dist/icons/game-of-bombs_90024.png?width=64&height=64&mode=crop&upscale=false"></img></div>
