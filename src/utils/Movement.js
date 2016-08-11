@@ -1,29 +1,41 @@
-const handleKeyDown = function(event, x, y){
+const movement = function(event, currentX, currentY, crates){
     event.preventDefault();
     switch (event.code){
       case "ArrowDown":
-        else if (y > 1){
-          this.setState({playerOneY: y - 1});
+        if ((currentY-1)%2 === 0 && currentX%2 === 0 ){
+          return {playerOneY: currentY, playerOneX: currentX};
+        }
+        else if (currentY > 1){
+          return {playerOneY: currentY - 1, playerOneX: currentX};
         }
         break;
       case "ArrowUp":
-        if (y < 3){
-          this.setState({playerOneY: y + 1});
+        if ((currentY+1)%2 === 0 && currentX%2 === 0 ){
+          return {playerOneY: currentY, playerOneX: currentX};
+        }
+        else if (currentY < 9){
+          return {playerOneY: currentY + 1, playerOneX: currentX};
         }
         break;
       case "ArrowLeft":
-        if (x > 1){
-          this.setState({playerOneX: x - 1});
+        if ((currentX-1)%2 === 0 && currentY%2 === 0 ){
+          return {playerOneY: currentY, playerOneX: currentX};
+        }
+        else if (currentX > 1){
+          return {playerOneY: currentY, playerOneX: currentX - 1};
         }
         break;
       case "ArrowRight":
-        if (x < 3){
-          this.setState({playerOneX: x + 1});
+        if ((currentX+1)%2 === 0 && currentY%2 === 0 ){
+          return {playerOneY: currentY, playerOneX: currentX};
+        }
+        else if (currentX < 9){
+          return {playerOneY: currentY, playerOneX: currentX + 1};
         }
         break;
       default:
-      console.log("derp");
+        return
       }
   };
 
-module.exports = handleKeyDown
+module.exports = movement;
