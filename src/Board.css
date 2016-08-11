@@ -1,4 +1,4 @@
-.blockContainer {
+.tileContainer {
   text-align: center;
   width: 100vw;
   height: 100vh;
@@ -20,7 +20,10 @@
   float: left;
 }
 
-.dot {
-  border: solid black 5px;
-  border-radius: 10px;
+.playerOne{
+  background: blue;
+  height: 10%;
+  width: 10%;
+  border: 1px solid black;
+  float: left;
 }
