@@ -3,13 +3,6 @@ import Board from './Board.js'
 import './App.css';
 
 class App extends Component {
-  constructor(props){
-    super(props);
-  }
-
-  func = (fromChild) => {
-    console.log(fromChild);
-  }
 
   render(){
     return(

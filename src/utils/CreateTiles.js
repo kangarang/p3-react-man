@@ -7,7 +7,7 @@ const createTiles = function(){
       obj.y = j;
       obj.playerOne = false;
       obj.crate = false;
-      if (obj.y % 2 == 0 && obj.x % 2 === 0) {
+      if (obj.y % 2 === 0 && obj.x % 2 === 0) {
         obj.cement = true
       } else {
         obj.cement = false;
@@ -19,7 +19,7 @@ const createTiles = function(){
     }
   }
   console.log(tiles);
-  const rando = Math.floor(Math.random() * 81)
+  // const random = Math.floor(Math.random() * 81)
   tiles[80].playerOne = true
   tiles[40].crate = true
   tiles[41].crate = true
