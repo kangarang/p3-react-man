@@ -6,11 +6,13 @@ import help from '../utils/helpers.js'
 class App extends Component {
   constructor(props){
     super(props);
+
   }
 
   func = (fromChild) => {
     console.log(fromChild);
   }
+
 
   render(){
     return(

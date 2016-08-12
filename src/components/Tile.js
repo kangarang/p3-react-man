@@ -3,11 +3,11 @@ import './Tile.css';
 import help from '../utils/helpers.js'
 import keyDown from '../utils/keyDown.js'
 import Element from '../utils/Element.js'
+import ReactDOM from 'react-dom'
 
 class Tile extends Component {
   constructor(props){
     super(props);
-    const tileCoords = this.props.coords
     this.state = {
       man: "",
       bomb: "",
@@ -15,34 +15,46 @@ class Tile extends Component {
       fire: "",
       wall: "",
       woman: "",
+      potentialCoords: {x: 1, y: 3},
       preCoords: {},
       postCoords: {},
-      keyCode: "",
-      potentialCoords: {},
-      manCoords: {}
+      keyCode: ""
     }
   }
 
-  setUp(){
-    this.setState({
-      manCoords: {x: 1, y: 3}
-    })
+  setUp() {
+    // this.setState({
+    //   potentialCoords: {x: 1, y: 3}
+    // })
     // if (this.props.coords.x%2 === 0 && this.props.coords.y%2 === 0){
     //   this.setState({wall: true})
     // }
   }
 
+  componentDidUpdate(prevProps, prevState) {
+    let height = ReactDOM.findDOMNode(this)
+    console.log(prevProps, prevState);
+    console.log(height);
+  }
+
   componentDidMount = () => {
-    this.setUp()
+    // this.setUp()
     window.addEventListener("keydown", this.handleKeyDown.bind(this));
   }
 
   handleKeyDown = (e) => {
     e.preventDefault()
-    const manCoords = this.state.manCoords
+    const potentialCoords = this.state.potentialCoords
     // const preCoords = this.state.preCoords
-    if (manCoords){
-      const intentCoords = keyDown(e, manCoords)
+    const postCoords = this.state.postCoords
+
+    if (potentialCoords) {
+      const intentCoords = keyDown(e, potentialCoords)
+      if (intentCoords) {
+        this.possibleMove(intentCoords)
+      }
+    } else if (postCoords) {
+      const intentCoords = keyDown(e, potentialCoords)
       if (intentCoords) {
         this.possibleMove(intentCoords)
       }
@@ -54,12 +66,7 @@ class Tile extends Component {
     const postCoords = this.state.postCoords;
     const keyCode = this.state.keyCode;
     const tileCoords = this.props.coords;
-    console.log(intentCoords + "blob");
-    console.log(tileCoords + "fdsa");
     if (intentCoords) {
-      this.setState({
-        postCoords: {}
-      })
       if ((intentCoords.x === tileCoords.x) && (intentCoords.y === tileCoords.y)) {
         console.log("heh");
         this.setState({
@@ -76,7 +83,6 @@ class Tile extends Component {
 
 
     // const potentialCoords = this.state.potentialCoords;
-
     // const tilePos = this.props.coords;
     // if ((this.state.crate === false) && (this.state.wall === false) && (tilePos.x === this.props.prePos.x) && (tilePos.y === this.props.prePos.y) ){
     //   console.log(this.props.prePos.x);
@@ -86,13 +92,6 @@ class Tile extends Component {
     // return false
   }
 
-  isMan = () => {
-    // const tilePos = this.props.coords;
-    // // const manPos = this.props.prePos;
-    // if (tilePos.x === this.props.prePos.x && tilePos.y === this.props.prePos.y){
-    //   return <img role="presentation" className="icon" src="http://icons.iconarchive.com/icons/yellowicon/game-stars/128/Bomberman-icon.png"></img>
-    // }
-  }
 
   grabStore() {
     // const fromHelp = help.getFromHelper()
@@ -102,13 +101,13 @@ class Tile extends Component {
   element() {
     const postCoords = this.state.postCoords
     const preCoords = this.state.preCoords
-    const manCoords = this.state.manCoords
+    const potentialCoords = this.state.potentialCoords
     const tileCoords = this.props.coords
     if (this.props.wall) {
       return <div className="wall"><img role='presentation' className='icon' src="https://cdn0.iconfinder.com/data/icons/city-space-1/512/brick_wall-512.png"></img></div>
     } else if (tileCoords.x === postCoords.x && tileCoords.y === postCoords.y) {
       return <div className="man"><img role="presentation" className="icon" src="http://icons.iconarchive.com/icons/yellowicon/game-stars/128/Bomberman-icon.png"></img></div>
-    } else if (tileCoords.x === manCoords.x && tileCoords.y === manCoords.y) {
+    } else if (tileCoords.x === potentialCoords.x && tileCoords.y === potentialCoords.y) {
       return <div className="man"><img role="presentation" className="icon" src="http://icons.iconarchive.com/icons/yellowicon/game-stars/128/Bomberman-icon.png"></img></div>
     } else if (preCoords) {
       return
@@ -116,7 +115,7 @@ class Tile extends Component {
   }
 
   render(){
-    const elements = this.state
+    // const elements = this.state
     return(
       <div className="tile">
         {this.element()}
