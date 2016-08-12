@@ -16,7 +16,7 @@ const createTiles = function(){
       obj.fire = false
       console.log(obj)
       tileStates.push(obj)
-    }
+    };
   }
   const rando = Math.floor(Math.random() * 81)
   if (tileStates)
