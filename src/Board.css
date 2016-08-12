@@ -27,3 +27,11 @@
   border: 1px solid black;
   float: left;
 }
+
+.crate{
+  background: brown;
+  height: 10%;
+  width: 10%;
+  border: 1px solid black;
+  float: left;
+}

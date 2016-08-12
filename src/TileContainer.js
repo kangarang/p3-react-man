@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Grass from './Tiles/Grass.js';
 import Cement from './Tiles/Cement.js';
 import PlayerOne from './Tiles/PlayerOne.js';
+import Crate from './Tiles/Crate.js'
 
 class TileContainer extends Component {
 
@@ -12,6 +13,8 @@ class TileContainer extends Component {
         return <Cement key={[tile.x, tile.y]} />
       } else if (tile.playerOne === true){
         return <PlayerOne key={[tile.x, tile.y]} />
+      } else if (tile.crate === true){
+        return <Crate key={[tile.x, tile.y]} />
       } else {
         return <Grass key={[tile.x, tile.y]} />
       }

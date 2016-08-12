@@ -108,7 +108,7 @@ const createTiles = function(){
       x: 5,
       y: 8,
       playerOne: false,
-      crate: false,
+      crate: true,
       bomb: false,
       cement: false
     },
@@ -204,7 +204,7 @@ const createTiles = function(){
       x: 8,
       y: 7,
       playerOne: false,
-      crate: false,
+      crate: true,
       bomb: false,
       cement: false
     },
@@ -268,7 +268,7 @@ const createTiles = function(){
       x: 7,
       y: 6,
       playerOne: false,
-      crate: false,
+      crate: true,
       bomb: false,
       cement: false
     },
