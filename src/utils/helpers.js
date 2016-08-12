@@ -3,7 +3,7 @@ const help = {
   stored: "",
 
   store: (gift) => {
-    console.log(gift);
+    // console.log(gift);
     help.stored = gift
     return gift
   },

@@ -1,14 +1,15 @@
-.ZeroZero {
-  height: 10%;
-  width: 10%;
+.tile {
+  height: 30%;
+  width: 30%;
   border: 1px solid black;
   float: left;
+  background-color: green;
 }
 
 .man {
   height: 100%;
   width: 100%;
-  background-color: lightgreen;
+  background-color: green;
 }
 .woman {
   height: 100%;
@@ -24,7 +25,7 @@
 .wall {
   height: 100%;
   width: 100%;
-  background-color: grey;
+  background-color: green;
 }
 .bomb {
   height: 100%;
