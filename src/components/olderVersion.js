@@ -119,13 +119,13 @@ class App extends Component {
     const Coords = []
     for ( let j = 8; j >= 0; j-- ) {
       for ( let i = 0; i <= 8; i++ ) {
-        let obj = {}
+        let obj = {};
         obj.x = i;
         obj.y = j;
-        Coords.push(obj)
+        Coords.push(obj);
       }
     } // working
-    console.log(App.props)
+    console.log(App.props);
 
 
     const WordArray = []
