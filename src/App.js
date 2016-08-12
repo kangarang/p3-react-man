@@ -11,7 +11,6 @@ class App extends Component {
     console.log(fromChild);
   }
 
-
   render(){
     return(
       <div className="App">
