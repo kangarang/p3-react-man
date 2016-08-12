@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import update from 'react-addons-update'
-
 import createTiles from './utils/CreateTiles.js';
 import TileContainer from './TileContainer.js';
 import movement from './utils/Movement.js';
@@ -8,11 +7,11 @@ import './Board.css';
 
 class Board extends Component {
   constructor(props){
-    super(props);
+    super(props)
     this.state = {
       tiles: []
     }
-  };
+  }
 
   handleKeyDown(event){
     const position = this.state.tiles.filter(tile => tile.playerOne === true);

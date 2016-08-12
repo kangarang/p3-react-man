@@ -5,6 +5,7 @@ const createTiles = function(){
       let obj = {}
       obj.x = i;
       obj.y = j;
+
       obj.playerOne = false
       obj.crate = false
       if (obj.y%2 === 0 && obj.x%2 === 0) {
