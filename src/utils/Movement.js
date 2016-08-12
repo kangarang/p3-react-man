@@ -2,6 +2,9 @@ const movement = function(event, position){
     event.preventDefault();
     let x = position.x;
     let y = position.y;
+    if (event.code === "Space") {
+      return "bomb";
+    }
     switch (event.code){
       case "ArrowDown":
         y--
