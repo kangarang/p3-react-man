@@ -22,7 +22,6 @@ class Board extends Component {
 
   explosion(bombIndex){
     this.setState({
-
       tiles: update(this.state.tiles, {[bombIndex]: {
         bomb: {$set: false},
         playerOne: {$set: false}
