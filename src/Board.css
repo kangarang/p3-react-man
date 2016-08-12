@@ -12,6 +12,11 @@
   float: left;
 }
 
+.icon {
+  height: 100%;
+  width: 100%;
+}
+
 .cement {
   background: grey;
   height: 10%;
@@ -21,7 +26,7 @@
 }
 
 .playerOne{
-  background: blue;
+  background: green;
   height: 10%;
   width: 10%;
   border: 1px solid black;

@@ -7,8 +7,8 @@ const createTiles = function(){
       obj.y = j;
       obj.playerOne = false;
       obj.crate = false;
-      if (obj.y % 2 == 0 && obj.x % 2 === 0) {
-        obj.cement = true
+      if (obj.y % 2 === 0 && obj.x % 2 === 0) {
+        obj.cement = true;
       } else {
         obj.cement = false;
       }
@@ -18,15 +18,15 @@ const createTiles = function(){
       tiles.push(obj);
     }
   }
-  console.log(tiles);
-  const rando = Math.floor(Math.random() * 81)
-  tiles[80].playerOne = true
-  tiles[40].crate = true
-  tiles[41].crate = true
-  tiles[39].crate = true
-  tiles[31].crate = true
-  tiles[49].crate = true
-  return tiles
+  // console.log(tiles);
+  // const rando = Math.floor(Math.random() * 81)
+  tiles[80].playerOne = true;
+  tiles[40].crate = true;
+  tiles[41].crate = true;
+  tiles[39].crate = true;
+  tiles[31].crate = true;
+  tiles[49].crate = true;
+  return tiles;
 };
 
 module.exports = createTiles;

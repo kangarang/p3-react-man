@@ -3,7 +3,7 @@ import React from 'react';
 
 function POneBomb(props){
     return (
-      <div className="playerOne">BOMB</div>
+      <div className="grass"><img role="presentation" className="icon" src="http://icons.iconarchive.com/icons/yellowicon/game-stars/128/Bomberman-icon.png"></img></div>
     );
 }
 
