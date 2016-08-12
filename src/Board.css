@@ -1,0 +1,37 @@
+.tileContainer {
+  text-align: center;
+  width: 100vw;
+  height: 100vh;
+}
+
+.grass {
+  background: green;
+  height: 10%;
+  width: 10%;
+  border: 1px solid black;
+  float: left;
+}
+
+.cement {
+  background: grey;
+  height: 10%;
+  width: 10%;
+  border: 1px solid black;
+  float: left;
+}
+
+.playerOne{
+  background: blue;
+  height: 10%;
+  width: 10%;
+  border: 1px solid black;
+  float: left;
+}
+
+.crate{
+  background: brown;
+  height: 10%;
+  width: 10%;
+  border: 1px solid black;
+  float: left;
+}
