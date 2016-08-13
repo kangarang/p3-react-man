@@ -13,12 +13,12 @@ class Game extends Component {
     }
   };
 
-  fireTimer(){
+  fireTimer() {
     const App = this;
     window.setInterval(function(){
       console.log("timer");
       App.eachFire();
-    },500)
+    }, 500)
   }; //Check for fire
 
   eachFire(){
@@ -40,13 +40,13 @@ class Game extends Component {
     });
   }; //Clear fire, destroy player if inside fire
 
-  bomb(bombIndex){
+  bomb(bombIndex) {
     const App = this;
     window.setTimeout(function(){
       App.explosion(bombIndex)},3000)
   }; //Start bomb/explosion timer
 
-  explosion(bombIndex){
+  explosion(bombIndex) {
     const tiles = this.state.tiles;
     const showMe = fourWay(tiles[bombIndex]);
     function fourWay(bCoords) {
@@ -94,28 +94,53 @@ class Game extends Component {
   }; //End Explosion
 
   handleKeyDown(event){
-    let position = this.state.tiles.filter(tile => tile.playerOne === true);
-    let newPosition = movement(event, position[0]);
-    let atPosition = this.state.tiles.filter(tile => tile.x === newPosition[0] && tile.y === newPosition[1] && tile.cement === false && tile.crate === false && tile.bomb === false)
-    if (atPosition.length){
-      const old = this.state.tiles.indexOf(position[0]);
-      const newer = this.state.tiles.indexOf(atPosition[0]);
-      this.setState({
-        tiles: update(this.state.tiles, {[old]: {playerOne: {$set: false}}})
-      })
-      this.setState({
-        tiles: update(this.state.tiles, {[newer]: {playerOne: {$set: true}}})
-      })
-    } else if (newPosition === "bomb") {
-      console.log("plant bomb");
-      const i = this.state.tiles.indexOf(position[0]);
-      this.setState({
-        tiles: update(this.state.tiles, {[i]: {bomb: {$set: true}}})
-      })
-      if (this.state.tiles[i].bomb === true) {
-          return this.bomb(i);
-        };
+    if (event.code === "KeyW" || event.code === "KeyE" || event.code === "KeyA" || event.code === "KeyD" || event.code === "KeyS") {
+      let position = this.state.tiles.filter(tile => tile.playerTwo === true);
+      let newPosition = movement(event, position[0]);
+      let atPosition = this.state.tiles.filter(tile => tile.x === newPosition[0] && tile.y === newPosition[1] && tile.cement === false && tile.crate === false && tile.bomb === false)
+      if (atPosition.length) {
+        const old = this.state.tiles.indexOf(position[0]);
+        const newer = this.state.tiles.indexOf(atPosition[0]);
+        this.setState({
+          tiles: update(this.state.tiles, {[old]: {playerTwo: {$set: false}}})
+        })
+        this.setState({
+          tiles: update(this.state.tiles, {[newer]: {playerTwo: {$set: true}}})
+        })
+      } else if (newPosition === "bomb") {
+        console.log("plant bomb");
+        const i = this.state.tiles.indexOf(position[0]);
+        this.setState({
+          tiles: update(this.state.tiles, {[i]: {bomb: {$set: true}}})
+        })
+        if (this.state.tiles[i].bomb === true) {
+            return this.bomb(i);
+          }
+      }
+    } else if (event.code === "ArrowUp" || event.code === "Space"|| event.code === "ArrowDown" || event.code === "ArrowRight" || event.code === "ArrowLeft"){
+      let position = this.state.tiles.filter(tile => tile.playerOne === true);
+      let newPosition = movement(event, position[0]);
+      let atPosition = this.state.tiles.filter(tile => tile.x === newPosition[0] && tile.y === newPosition[1] && tile.cement === false && tile.crate === false && tile.bomb === false)
+      if (atPosition.length) {
+        const old = this.state.tiles.indexOf(position[0]);
+        const newer = this.state.tiles.indexOf(atPosition[0]);
+        this.setState({
+          tiles: update(this.state.tiles, {[old]: {playerOne: {$set: false}}})
+        })
+        this.setState({
+          tiles: update(this.state.tiles, {[newer]: {playerOne: {$set: true}}})
+        })
+      } else if (newPosition === "bomb") {
+        console.log("plant bomb");
+        const i = this.state.tiles.indexOf(position[0]);
+        this.setState({
+          tiles: update(this.state.tiles, {[i]: {bomb: {$set: true}}})
+        })
+        if (this.state.tiles[i].bomb === true) {
+            return this.bomb(i);
+          };
 
+      }
     } else return
   };
 

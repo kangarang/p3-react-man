@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Grass from '../Tiles/Grass.js';
 import Cement from '../Tiles/Cement.js';
 import PlayerOne from '../Tiles/PlayerOne.js';
+import PlayerTwo from '../Tiles/PlayerTwo.js';
 import Crate from '../Tiles/Crate.js';
 import Bomb from '../Tiles/Bomb.js';
 import Fire from '../Tiles/Fire.js';
@@ -16,6 +17,8 @@ class TileContainer extends Component {
         return <Cement key={[tile.x, tile.y]} />
       } else if (tile.playerOne === true && tile.bomb === false){
         return <PlayerOne key={[tile.x, tile.y]} />
+      } else if (tile.playerTwo === true && tile.bomb === false){
+        return <PlayerTwo key={[tile.x, tile.y]} />
       } else if (tile.crate === true){
         return <Crate key={[tile.x, tile.y]} />
       } else if (tile.bomb === true && tile.playerOne === false){
