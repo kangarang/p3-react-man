@@ -8,7 +8,7 @@ const createTiles = function(){
       obj.playerOne = false;
       obj.crate = false;
       if (obj.y % 2 === 0 && obj.x % 2 === 0) {
-        obj.cement = true;
+        obj.cement = true
       } else {
         obj.cement = false;
       }
@@ -28,6 +28,7 @@ const createTiles = function(){
   tiles[31].crate = true;
   tiles[49].crate = true;
   return tiles;
+
 };
 
 module.exports = createTiles;
