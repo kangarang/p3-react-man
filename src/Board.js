@@ -20,12 +20,84 @@ class Board extends Component {
   };
 
   explosion(bombIndex){
+    const tiles = this.state.tiles;
+    const bombCoords = tiles[bombIndex];
+    const obj = bombCoords
+
+    const showMe = fourWay(obj)
+
+    console.log(bombIndex);
+
+    function fourWay(bCoords) {
+      const exCoords = []
+      // right 1, right 2
+      exCoords.push([{x: bCoords.x + 1, y: bCoords.y},{x: bCoords.x + 2, y: bCoords.y}])
+      // left 1, left 2
+      exCoords.push([{x: bCoords.x - 1, y: bCoords.y},{x: bCoords.x - 2, y: bCoords.y}])
+      // up 1, up 2
+      exCoords.push([{x: bCoords.x, y: bCoords.y + 1},{x: bCoords.x, y: bCoords.y + 2}])
+      // down 1, down 2
+      exCoords.push([{x: bCoords.x, y: bCoords.y - 1},{x: bCoords.x, y: bCoords.y - 2}])
+      return exCoords
+    }
+
+    console.log(showMe);
     this.setState({
       tiles: update(this.state.tiles, {[bombIndex]: {
         bomb: {$set: false},
         playerOne: {$set: false}
       }})
-    });
+    })
+
+    for (let i = 0; i < showMe.length; i++) {
+      let checkExp = showMe[i]
+      let willExplode = tiles.filter(tile => tile.x === checkExp[0].x && tile.y === checkExp[0].y && tile.cement === false)
+
+      let willExplodeTwo = tiles.filter(tile => tile.x === checkExp[1].x && tile.y === checkExp[1].y && tile.cement === false)
+
+      if (willExplode.length) {
+        const toExplode = tiles.indexOf(willExplode[0])
+        const twoExplode = tiles.indexOf(willExplodeTwo[0])
+
+        this.setState({
+          tiles: update(this.state.tiles, {[toExplode]: {
+            bomb: {$set: false},
+            playerOne: {$set: false},
+            crate: {$set: false}
+          }})
+        })
+
+        this.setState({
+          tiles: update(this.state.tiles, {[twoExplode]: {
+            bomb: {$set: false},
+            playerOne: {$set: false}
+          }})
+        })
+
+
+      } else {
+          return
+      }
+
+
+      for (var j = 0; j < showMe[i].length; j++) {
+        const show = tiles.filter( (oneObj, index) => {
+          // showMe[i][j] === oneObj
+        })
+        console.log("show", show);
+        // console.log(tiles.indexOf(showMe[i][j]));
+        // if ( showMe[i][j].wall === false ) {
+        //   console.log("not a wall");
+        //   explodeMe(bombIndex)
+        //
+        //   // this.setState({
+        //   //   tiles:update(this.state.tiles, {showMe[i][j]})
+        //   // })
+        // } else {
+        //   return
+        // }
+      }
+    }
   };
 
   handleKeyDown(event){
