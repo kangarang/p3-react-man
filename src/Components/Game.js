@@ -48,7 +48,7 @@ class Game extends Component {
 
   explosion(bombIndex) {
     const tiles = this.state.tiles;
-    const showMe = fourWay(tiles[bombIndex]);
+    const fourArraysOfObJects = fourWay(tiles[bombIndex]);
     function fourWay(bCoords) {
       const exCoords = []
       exCoords.push([{x: bCoords.x + 1, y: bCoords.y},{x: bCoords.x + 2, y: bCoords.y}])
@@ -57,17 +57,21 @@ class Game extends Component {
       exCoords.push([{x: bCoords.x, y: bCoords.y - 1},{x: bCoords.x, y: bCoords.y - 2}])
       return exCoords
     } //Get explosion "radius"
+
     this.setState({
       tiles: update(this.state.tiles, {[bombIndex]: {
         bomb: {$set: false},
         playerOne: {$set: false},
         fire: {$set: true}
       }})
-    })
-    for (let i = 0; i < showMe.length; i++) {
-      let checkExp = showMe[i]
-      let willExplode = tiles.filter(tile => tile.x === checkExp[0].x && tile.y === checkExp[0].y && tile.cement === false)
-      let willExplodeTwo = tiles.filter(tile => tile.x === checkExp[1].x && tile.y === checkExp[1].y && tile.cement === false)
+    });
+
+    for (let i = 0; i < fourArraysOfObJects.length; i++) {
+      let oneArrayOfObj = fourArraysOfObJects[i];
+
+      let willExplode = tiles.filter(tile => tile.x === oneArrayOfObj[0].x && tile.y === oneArrayOfObj[0].y && tile.cement === false)
+      let willExplodeTwo = tiles.filter(tile => tile.x === oneArrayOfObj[1].x && tile.y === oneArrayOfObj[1].y && tile.cement === false)
+
       if (willExplode.length) {
         const toExplode = tiles.indexOf(willExplode[0])
         const twoExplode = tiles.indexOf(willExplodeTwo[0])
@@ -86,10 +90,8 @@ class Game extends Component {
               playerOne: {$set: false}
             }})
           })
-        };
-      } else {
-          return
-      };
+        }
+      }
     }
   }; //End Explosion
 
