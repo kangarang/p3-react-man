@@ -65,7 +65,7 @@ class Board extends Component {
             playerOne: {$set: false},
             crate: {$set: false}
           }})
-        });
+        })
 
         this.setState({
           tiles: update(this.state.tiles, {[twoExplode]: {
