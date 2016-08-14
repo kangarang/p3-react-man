@@ -9,7 +9,6 @@ var config = {
     storageBucket: "bomberman-react.appspot.com",
   };
 
-
 firebaseapp.initializeApp(config)
 
 const firebaseUtils = {
