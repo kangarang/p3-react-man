@@ -1,11 +1,12 @@
 import React, {Component} from 'react';
 import update from 'react-addons-update'
 import createTiles from '../utils/CreateTiles.js';
+import firebaseHelpers from '../utils/AuthHelpers.js';
 import TileContainer from './TileContainer.js';
 import movement from '../utils/Movement.js';
 import './Game.css';
 import help from '../utils/helpers.js'
-
+import helpers from '../utils/AuthHelpers';
 
 class Game extends Component {
   constructor(props) {
@@ -18,8 +19,8 @@ class Game extends Component {
 
   checkWin() {
     const tiles = this.state.tiles;
-    const playerOne = this.state.tiles.filter(tile => tile.playerOne === true);
-    const playerTwo = this.state.tiles.filter(tile => tile.playerTwo === true);
+    const playerOne = tiles.filter(tile => tile.playerOne === true);
+    const playerTwo = tiles.filter(tile => tile.playerTwo === true);
     if (playerOne.length && playerTwo.length){
       return
     } else if (playerOne.length) {
@@ -34,6 +35,7 @@ class Game extends Component {
       let saveObj = {}
       saveObj.winner = this.state.winner
       saveObj.time = new Date()
+
 
       help.save(saveObj).then( res => {
         console.log(res);
@@ -180,15 +182,20 @@ class Game extends Component {
       } else return
     }; //end movement playerOne movement
 
+
   componentDidMount(){
-    window.addEventListener('keydown', this.handleKeyDown.bind(this))
-    this.setState({tiles: createTiles()});
-    this.fireTimer();
+    if (firebaseHelpers.checkUser(this.state.userId)) {
+      window.addEventListener('keydown', this.handleKeyDown.bind(this))
+      this.setState({tiles: createTiles()});
+      this.fireTimer();
+    }
   }; //Adds event listener and setsState of gameboard
 
   render(){
     return(
-      <TileContainer tiles={this.state.tiles} />
+      <div className="game">
+        <TileContainer tiles={this.state.tiles} />
+      </div>
     )
   }; //Container worried about one state that changes based on user input.
 }
