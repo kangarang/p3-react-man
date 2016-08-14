@@ -2,12 +2,14 @@ import firebaseapp from 'firebase';
 import firebase from 'firebase';
 import { browserHistory } from 'react-router';
 
-const config = {
-  apiKey: "AIzaSyDaA4ZGQODQrfl4SX_B8RP7SEWnhkHpviI",
-  authDomain: "testingauth-9f65c.firebaseapp.com",
-  databaseURL: "https://testingauth-9f65c.firebaseio.com",
-  storageBucket: "testingauth-9f65c.appspot.com",
-};
+var config = {
+    apiKey: "AIzaSyDGJmgqfJI5V6cnGw0L5AuqinK3noWLXd0",
+    authDomain: "bomberman-react.firebaseapp.com",
+    databaseURL: "https://bomberman-react.firebaseio.com",
+    storageBucket: "bomberman-react.appspot.com",
+  };
+
+firebase.initializeApp(config);
 
 firebaseapp.initializeApp(config)
 
