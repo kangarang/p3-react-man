@@ -4,6 +4,8 @@ import createTiles from '../utils/CreateTiles.js';
 import TileContainer from './TileContainer.js';
 import movement from '../utils/Movement.js';
 import './Game.css';
+import help from '../utils/helpers.js'
+
 
 class Game extends Component {
   constructor(props) {
@@ -14,22 +16,34 @@ class Game extends Component {
     }
   };
 
-  checkWin(){
+  checkWin() {
     const tiles = this.state.tiles;
     const playerOne = this.state.tiles.filter(tile => tile.playerOne === true);
     const playerTwo = this.state.tiles.filter(tile => tile.playerTwo === true);
     if (playerOne.length && playerTwo.length){
       return
     } else if (playerOne.length) {
-      this.setState({winner: "one"})
+      this.setState({winner: "player one"})
     } else if (playerTwo.length) {
-      this.setState({winner: "two"})
+      this.setState({winner: "player two"})
     } else {
-      this.setState({winner: "tie"})
-    };
+      this.setState({winner: "tie!"})
+    }
 
     if (this.state.winner !== "false") {
-      console.log(this.state.winner);
+      let saveObj = {}
+      saveObj.winner = this.state.winner
+      saveObj.time = new Date()
+
+      help.save(saveObj).then( res => {
+        console.log(res);
+        return res.json()
+      }).then( json => {
+        return console.log("this is the json from saving the highscore", json);
+        // this.setState({
+        //   highScores: json
+        // })
+      })
     };
   };
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import help from '../utils/helpers.js'
 import './App.css';
-import { Nav, NavItem, MenuItem, NavDropDown, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 class HighScores extends Component {
   constructor(props) {
@@ -20,10 +20,8 @@ class HighScores extends Component {
     }
     if (saveObj) {
       help.save(saveObj).then( res => {
-        console.log(res);
         return res.json()
       }).then( json => {
-        console.log(json);
         this.setState({
           highScores: json
         })
@@ -34,9 +32,9 @@ class HighScores extends Component {
   show(e) {
     e.preventDefault()
     help.showAll().then( res => {
-      console.log(res);
       return res.json()
     }).then( json => {
+      console.log('all responses' + json);
       let name;
       let time;
       for (let key in json) {
@@ -53,8 +51,8 @@ class HighScores extends Component {
   }
 
   render() {
-    let name = this.state.name
-    let time = this.state.time
+    // let name = this.state.name
+    // let time = this.state.time
     return (
       <div className="HighScores">
         <h2>High Scores</h2>
