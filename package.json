@@ -6,7 +6,12 @@
     "react-scripts": "0.2.1"
   },
   "dependencies": {
+    "body-parser": "^1.15.2",
     "bootstrap": "^3.3.7",
+    "cors": "^2.7.1",
+    "express": "^4.14.0",
+    "mongodb": "^2.2.5",
+    "nodemon": "^1.10.0",
     "react": "^15.2.1",
     "react-addons-update": "^15.3.0",
     "react-bootstrap": "^0.30.2",
