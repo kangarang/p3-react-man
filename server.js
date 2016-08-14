@@ -6,10 +6,10 @@ const path = require('path');
 
 app.use(cors());
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/build'))
 
 app.get('*', (req, res) =>
-  res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+  res.sendFile(path.resolve(__dirname, 'build', 'index.html'))
 )
 
 app.listen(PORT, () =>
