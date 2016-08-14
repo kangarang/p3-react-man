@@ -62,6 +62,7 @@ const firebaseUtils = {
 
   signOut: function() {
     firebase.auth().signOut().then(function() {
+      console.log("logged out?");
     // Sign-out successful.
   }, function(error) {
     // An error happened.

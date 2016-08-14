@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import helpers from '../utils/AuthHelpers';
 import { Link } from 'react-router';
+import NavLink from './NavLink';
+
 import './App.css';
 
 class SignUp extends Component {
@@ -33,7 +35,7 @@ class SignUp extends Component {
               <label className="sr-only">Password</label>
               <input type="password" className="form-control" id="exampleInputPassword3" placeholder="Password" onChange={(event) => this.setState({pw: event.target.value})} />
             </div>
-            <button type="submit" className="btn btn-default" onClick={(event) => this.makeUser(event)}><Link to="/log-in">Sign up</Link></button>
+            <button type="submit" className="btn btn-default" onClick={(event) => this.makeUser(event)}><NavLink to="/bomberman/log-in">Sign up</NavLink></button>
           </form>
         </div>
       </div>

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import help from '../utils/helpers.js'
 import './App.css';
 import { Button } from 'react-bootstrap';
+import helpers from '../utils/AuthHelpers';
 
 class HighScores extends Component {
   constructor(props) {
@@ -53,6 +54,11 @@ class HighScores extends Component {
     })
   }
 
+  logOut(e) {
+    e.preventDefault()
+    helpers.signOut()
+  }
+
   render() {
     // let name = this.state.name
     // let time = this.state.time
@@ -61,6 +67,7 @@ class HighScores extends Component {
         <h2>High Scores</h2>
         <Button onClick={(event) => this.save(event)}>Save High Scores</Button>
         <Button onClick={(event) => this.show(event)}>Show All High Scores</Button>
+        <Button onClick={(event) => this.logOut(event)}>Log Out</Button>
       </div>
     )
   }

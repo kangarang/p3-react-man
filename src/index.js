@@ -19,10 +19,10 @@ ReactDOM.render (
     <Route path="/" component={App}>
       <IndexRoute component={Home} />
       <Route path="/bomberman" component={Bomberman}>
-        <Route path="/high_scores" component={HighScores} />
-        <Route path="/log-in" component={LogIn} />
-        <Route path="/sign-up" component={SignUp} />
-        <Route path="/game" component={Game} />
+        <Route path="/bomberman/high_scores" component={HighScores} />
+        <Route path="/bomberman/log-in" component={LogIn} />
+        <Route path="/bomberman/sign-up" component={SignUp} />
+        <Route path="/bomberman/game" component={Game} />
       </Route>
       <Route path="/about_game" component={AboutGame} />
       <Route path="/about_makers" component={AboutMakers} />

@@ -7,10 +7,10 @@ class Bomberman extends Component {
     return (
       <div>
         <div className="bigContainer">
-          <NavLink className="links" to="/sign-up" onlyActiveOnIndex>Sign Up</NavLink>
-          <NavLink className="links" to="/log-in" onlyActiveOnIndex>Log In</NavLink>
-          <NavLink className="links" to='/high_scores' onlyActiveOnIndex>HighScores</NavLink>
-          <NavLink className="links" to="/game" onlyActiveOnIndex>Play the game</NavLink>
+          <NavLink className="links" to="/bomberman/sign-up" onlyActiveOnIndex>Sign Up</NavLink>
+          <NavLink className="links" to="/bomberman/log-in" onlyActiveOnIndex>Log In</NavLink>
+          <NavLink className="links" to='/bomberman/high_scores' onlyActiveOnIndex>HighScores</NavLink>
+          <NavLink className="links" to="/bomberman/game" onlyActiveOnIndex>Play the game</NavLink>
         </div>
         {this.props.children}
       </div>
