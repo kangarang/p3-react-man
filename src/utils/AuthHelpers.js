@@ -9,7 +9,6 @@ var config = {
     storageBucket: "bomberman-react.appspot.com",
   };
 
-firebase.initializeApp(config);
 
 firebaseapp.initializeApp(config)
 
@@ -18,7 +17,7 @@ const firebaseUtils = {
     console.log("signing up...", email, pass);
     firebase.auth().createUserWithEmailAndPassword(email, pass).catch(err => {
       if (err) {
-          console.error(err.code, err.message)
+        console.error(err.code, err.message)
       }
     }).then(res => {
       console.log("helper",res);

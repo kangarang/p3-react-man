@@ -13,6 +13,7 @@ class Game extends Component {
     super(props)
     this.state = {
       tiles: [],
+      userId: localStorage.getItem("uid"),
       winner: "false"
     }
   };
@@ -184,11 +185,9 @@ class Game extends Component {
 
 
   componentDidMount(){
-    if (firebaseHelpers.checkUser(this.state.userId)) {
-      window.addEventListener('keydown', this.handleKeyDown.bind(this))
-      this.setState({tiles: createTiles()});
-      this.fireTimer();
-    }
+    window.addEventListener('keydown', this.handleKeyDown.bind(this))
+    this.setState({tiles: createTiles()});
+    this.fireTimer();
   }; //Adds event listener and setsState of gameboard
 
   render(){

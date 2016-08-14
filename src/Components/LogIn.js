@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import helpers from '../utils/AuthHelpers';
-import { Link } from 'react-router';
+import NavLink from './NavLink';
 
 class LogIn extends Component {
   constructor(props) {
@@ -31,7 +31,7 @@ class LogIn extends Component {
           <label className="sr-only">Password</label>
           <input type="password" className="form-control" id="exampleInputPassword3" placeholder="Password" onChange={(event) => this.setState({pw: event.target.value})} />
         </div>
-        <button type="submit" className="btn btn-default" onClick={(event) => this.signIn(event)}><Link to="/game">Let's do this!</Link></button>
+        <button type="submit" className="btn btn-default" onClick={(event) => this.signIn(event)}><NavLink to="/game">Let's do this!</NavLink></button>
       </form>
     </div>
     )
