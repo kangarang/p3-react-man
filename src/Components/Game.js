@@ -21,7 +21,7 @@ class Game extends Component {
     }, 500)
   }; //Check for fire
 
-  eachFire(){
+  eachFire() {
     const App = this;
     const fireTiles = this.state.tiles.filter(tile => tile.fire === true);
     fireTiles.map(function(tile, t){
@@ -29,7 +29,7 @@ class Game extends Component {
     })
   }; //For each fire run clearFire with current tile info
 
-  clearFire(tile){
+  clearFire(tile) {
     const tiles = this.state.tiles;
     const atTile = tiles.indexOf(tile);
     this.setState({
@@ -95,7 +95,7 @@ class Game extends Component {
     }
   }; //End Explosion
 
-  handleKeyDown(event){
+  handleKeyDown(event) {
     if (event.code === "KeyW" || event.code === "KeyE" || event.code === "KeyA" || event.code === "KeyD" || event.code === "KeyS") {
       let position = this.state.tiles.filter(tile => tile.playerTwo === true);
       let newPosition = movement(event, position[0]);
@@ -141,20 +141,19 @@ class Game extends Component {
         if (this.state.tiles[i].bomb === true) {
             return this.bomb(i);
           };
-
       }
     } else return
   };
 
-  componentDidMount(){
+  componentDidMount() {
     window.addEventListener('keydown', this.handleKeyDown.bind(this))
     this.setState({tiles: createTiles()});
     this.fireTimer();
   }; //Adds event listener and setsState of gameboard
 
-  render(){
-    return(
-      <TileContainer tiles={this.state.tiles} />
+  render() {
+    return (
+      <TileContainer className="tileContainer" tiles={this.state.tiles} />
     )
   }; //Container worried about one state that changes based on user input.
 }

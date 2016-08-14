@@ -9,7 +9,6 @@ import Fire from '../Tiles/Fire.js';
 import POneBomb from '../Tiles/POneBomb.js';
 
 class TileContainer extends Component {
-
   renderBoard(){
     const tiles = this.props.tiles
     let block = tiles.map(function(tile, t){
