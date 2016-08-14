@@ -1,0 +1,65 @@
+.tileContainer {
+  width: 100vw;
+  height: 80vh;
+}
+.links {
+  background-color: black;
+}
+
+.game {
+  width: 100%;
+  height: 100%;
+}
+
+.bigContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: flex-start;;
+  width: 100vw;
+  height: 100%;
+  background-color: black;
+
+}
+
+.grass {
+  background-color: green;
+  /*background-image: url('http://opengameart.org/sites/default/files/grass03_0.png');*/
+  height: 11%;
+  width: 11%;
+  float: left;
+}
+
+.icon {
+  height: 100%;
+  width: 100%;
+}
+
+.cement {
+  background: green;
+  /*background-image: url('http://opengameart.org/sites/default/files/grass03_0.png');*/
+  height: 11%;
+  width: 11%;
+  float: left;
+}
+
+.playerOne{
+  background: green;
+  height: 11%;
+  width: 11%;
+  float: left;
+}
+
+.crate{
+  background: green;
+  /*background-image: url('http://opengameart.org/sites/default/files/grass03_0.png');*/
+  height: 11%;
+  width: 11%;
+  float: left;
+}
+
+.iconCrate{
+  height: 98%;
+  width: 98%;
+  float: left;
+}
