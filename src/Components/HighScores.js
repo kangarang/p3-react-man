@@ -29,6 +29,7 @@ class HighScores extends Component {
     }
   }
 
+
   show(e) {
     e.preventDefault()
     help.showAll().then( res => {
