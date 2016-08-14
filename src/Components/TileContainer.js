@@ -7,6 +7,7 @@ import Crate from '../Tiles/Crate.js';
 import Bomb from '../Tiles/Bomb.js';
 import Fire from '../Tiles/Fire.js';
 import POneBomb from '../Tiles/POneBomb.js';
+import PTwoBomb from '../Tiles/PTwoBomb.js';
 
 class TileContainer extends Component {
   renderBoard(){
@@ -16,9 +17,11 @@ class TileContainer extends Component {
         return <Cement key={[tile.x, tile.y]} />
       } else if (tile.playerOne === true && tile.bomb === false){
         return <PlayerOne key={[tile.x, tile.y]} />
+      } else if (tile.bomb === true && tile.playerTwo === true) {
+        return <PTwoBomb key={[tile.x, tile.y]} />
       } else if (tile.playerTwo === true && tile.bomb === false){
         return <PlayerTwo key={[tile.x, tile.y]} />
-      } else if (tile.crate === true){
+      } else if (tile.crate === true) {
         return <Crate key={[tile.x, tile.y]} />
       } else if (tile.bomb === true && tile.playerOne === false){
         return <Bomb key={[tile.x, tile.y]} />
