@@ -1,5 +1,6 @@
 const help = {
   saved: "",
+  savedTwoWithInitials: [],
   save: (dataObj) => {
     const fetchSettings = {
       method: 'POST',
@@ -23,14 +24,17 @@ const help = {
     return fetch(url, fetchSettings);
   },
   saveAnObj: (saveObj) => {
-    console.log(help.saved);
     return help.saved = saveObj
+  },
+  saveInitials: (saveObj) => {
+    help.savedTwoWithInitials.push(saveObj)
+    return help.savedTwoWithInitials
   },
   grabObj: () => {
     return help.saved
   },
   showAll: () => {
-    const url = "https://bomberman-react.firebaseio.com/high-scores.json?print=pretty"
+    const url = "https://bomberman-react.firebaseio.com/non-user-high-scores.json?print=pretty"
     return fetch(url)
   }
 }

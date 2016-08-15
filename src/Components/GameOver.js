@@ -20,7 +20,8 @@ class GameOver extends Component {
     const initials = this.state.text
     if (savedObj) {
       savedObj.initials = initials
-      help.saveAnObj(savedObj)
+      const test = help.save(savedObj)
+      console.log(test);
     }
   }
 

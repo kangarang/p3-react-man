@@ -8,25 +8,7 @@ class HighScores extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: [],
-      time: []
-    }
-  }
-
-  save(e) {
-    e.preventDefault()
-    const saveObj = {
-      winner: "Dan",
-      time: new Date()
-    }
-    if (saveObj) {
-      help.save(saveObj).then( res => {
-        return res.json()
-      }).then( json => {
-        this.setState({
-          highScores: json
-        })
-      })
+      scores: []
     }
   }
 
@@ -36,19 +18,32 @@ class HighScores extends Component {
       return res.json()
     }).then( json => {
       console.log('all responses' + json);
-      let name;
-      let time;
-      for (let key in json) {
-        if (json.hasOwnProperty(key)) {
-          name = json[key].winner;
-          time = "Date: " + json[key].time.split("T").join(" at Time: ");
-          time = time.split(".");
-          time = time[0];
-        }
-        console.log(name);
-        console.log(time);
-      }
+      this.setState({
+        scores: [json]
+      })
     })
+  }
+
+  showScores(score) {
+    if (score) {
+      Object.keys(score).map( single => {
+        let time = score[single].time
+        time = time.split("T").join(" at: ");
+        time = time.split(".");
+        time = time[0];
+        let initials = score[single].initials
+        if (time && initials) {
+          console.log(time);
+          console.log(initials);
+          return (
+            <div>
+              <br></br>
+              <div>Hello{initials}{"   "}{time}</div>
+            </div>
+          )
+        }
+      })
+    }
   }
 
   logOut(e) {
@@ -57,14 +52,16 @@ class HighScores extends Component {
   }
 
   render() {
-    // let name = this.state.name
-    // let time = this.state.time
+    let scores = {}
+    if (this.state.scores) {
+      scores = this.state.scores[0]
+    }
     return (
       <div className="HighScores">
         <h2>High Scores</h2>
-        <Button onClick={(event) => this.save(event)}>Save High Scores</Button>
         <Button onClick={(event) => this.show(event)}>Show All High Scores</Button>
         <Button onClick={(event) => this.logOut(event)}>Log Out</Button>
+        {this.showScores(scores)}
       </div>
     )
   }
