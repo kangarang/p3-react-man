@@ -3,7 +3,7 @@ import React from 'react';
 
 function Cement(props){
     return (
-      <div className="cement"><img role='presentation' className='icon' src="http://imgur.com/a/IoQns"></img></div>
+      <div className="cement"><img role='presentation' className='icon' src="http://i.imgur.com/Hmob5z4.png"></img></div>
     );
 }
 
