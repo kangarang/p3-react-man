@@ -14,5 +14,5 @@ app.get('*', (req, res) =>
 
 app.listen(PORT, function() {
   // let port = server.address().port
-  console.log('listen to events on "port" ', port);
+  // console.log('listen to events on "port" ', port);
 })
