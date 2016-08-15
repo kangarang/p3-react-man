@@ -25,7 +25,7 @@ const createTiles = function(){
     }
   }
   tiles[80].playerOne = true;
-  tiles[0].playerTwo = true;
+  tiles[79].playerTwo = true;
 
 
   // for (let i = 0; i < tiles.length; i++){

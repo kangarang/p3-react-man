@@ -27,10 +27,12 @@ class GameOver extends Component {
   }
 
   whoWon(obj) {
-    if (obj) {
+    if (obj.winner !== "tie") {
       return (
         <div>{obj.winner + "Won!"}</div>
       )
+    } else{
+      return
     }
   }
 
