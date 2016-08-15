@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import help from '../utils/helpers.js'
-import './App.css';
+import '../Styles/App.css';
 import { Button } from 'react-bootstrap';
-import helpers from '../utils/AuthHelpers';
+// import helpers from '../utils/AuthHelpers';
 
 class HighScores extends Component {
   constructor(props) {
@@ -17,21 +17,25 @@ class HighScores extends Component {
     help.showAll().then( res => {
       return res.json()
     }).then( json => {
-      let arr = []
-      Object.keys(json).map( single => {
-        let newObje = {}
-        let time = json[single].time
-        time = time.split("T").join(" at: ");
-        time = time.split(".");
-        time = time[0];
-        let initials = json[single].initials
-        newObje.initials = initials
-        newObje.time = time
-        arr.push(newObje)
-      })
-      this.setState({
-        scores: arr
-      })
+      if (json) {
+        let arr = []
+        Object.keys(json).map( single => {
+          let newObje = {}
+          let time = json[single].time
+          time = time.split("T").join(" at: ");
+          time = time.split(".");
+          time = time[0];
+          let initials = json[single].initials
+          newObje.initials = initials
+          newObje.time = time
+          arr.push(newObje)
+        })
+        this.setState({
+          scores: arr
+        })
+      } else {
+        return
+      }
     })
   }
 
@@ -40,8 +44,10 @@ class HighScores extends Component {
     let ident = e.target.value
     if (ident.user) {
       help.delete(ident, ident.user)
-    } else {
+    } else if (ident.uid) {
       help.delete(ident, ident.uid)
+    } else {
+      return
     }
   }
 
@@ -53,20 +59,22 @@ class HighScores extends Component {
           <button onClick={(event) => this.deleteScore(event)} value={score}>DELETE</button>
         </div>
       )
+    } else {
+      return
     }
   }
-
-  logOut(e) {
-    e.preventDefault()
-    helpers.signOut()
-  }
+  //
+  // logOut(e) {
+  //   e.preventDefault()
+  //   helpers.signOut()
+  // }
 
   render() {
     return (
       <div className="HighScores">
         <h2>High Scores</h2>
         <Button onClick={(event) => this.show(event)}>Show All High Scores</Button>
-        <Button onClick={(event) => this.logOut(event)}>Log Out</Button>
+        {/* <Button onClick={(event) => this.logOut(event)}>Log Out</Button> */}
         {this.state.scores.map( (single, index) => this.showScores(single, index))}
       </div>
     )

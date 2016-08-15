@@ -35,8 +35,8 @@ const help = {
     return fetch(url, fetchSettings)
   },
   saveAnObj: (saveObj) => {
-
-    return help.saved = saveObj
+    help.saved = saveObj
+    return help.saved
   },
   saveInitials: (saveObj) => {
     help.savedTwoWithInitials.push(saveObj)

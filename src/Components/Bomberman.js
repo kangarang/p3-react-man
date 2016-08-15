@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import './Game.css';
+import '../Styles/Game.css';
+import '../Styles/App.css';
 import NavLink from './NavLink'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
@@ -14,7 +15,9 @@ class Bomberman extends Component {
           <NavLink className="links" to='/bomberman/high_scores' onlyActiveOnIndex>HighScores</NavLink>
           <NavLink className="links" to="/bomberman/game" onlyActiveOnIndex>Play the game</NavLink>
         </div>
-        {this.props.children}
+        <div className="bottom">
+          {this.props.children}
+        </div>
       </div>
     )
   };

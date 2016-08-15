@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import NavLink from './NavLink';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import './App.css';
+import '../Styles/App.css';
+import '../Styles/Game.css';
 
 class App extends Component {
   render() {
@@ -12,14 +13,14 @@ class App extends Component {
         <ul className="nav nav-tabs">
           <li role="presentation"><NavLink className="links" to='/' onlyActiveOnIndex>Home</NavLink>{" "}{" "}
           </li>
-          <li role="presentation"><NavLink className="links" to='/about_game' onlyActiveOnIndex>About The Game</NavLink>{" "}{" "}
-          </li>
           <li role="presentation"><NavLink className="links" to='/about_makers' onlyActiveOnIndex>About The Makers</NavLink>{" "}{" "}
           </li>
           <li role="presentation"><NavLink className="links" to='/bomberman' onlyActiveOnIndex>REACT MAN</NavLink>
           </li>
         </ul>
-        {this.props.children}
+        <div className='bottom'>
+          {this.props.children}
+        </div>
       </div>
       );
     }

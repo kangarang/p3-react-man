@@ -1,4 +1,4 @@
-import '../Components/Game.css'
+import '../Styles/Game.css'
 import React from 'react';
 
 function POneBomb(props){

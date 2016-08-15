@@ -21,8 +21,6 @@ class LogIn extends Component {
 
   render() {
     console.log("displayName", this.state.displayName);
-    console.log("userID", this.state.userid);
-    let userId = this.state.userid;
     return (
       <div className="SignInBox">
         <h1>Let's Log In!</h1>

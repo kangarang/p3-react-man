@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Tile.css';
 import help from '../utils/helpers.js'
 import keyDown from '../utils/keyDown.js'
 import Element from '../utils/Element.js'

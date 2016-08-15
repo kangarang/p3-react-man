@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import NavLink from './NavLink';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
-import './App.css';
+import '../Styles/App.css';
 import help from '../utils/helpers.js'
-import helpers from '../utils/AuthHelpers';
 
 class GameOver extends Component {
   constructor(props){
@@ -34,9 +32,13 @@ class GameOver extends Component {
   // }
 
   whoWon(obj) {
-    if (obj.winner !== "tie" && obj.winner !== undefined) {
+    if (obj.winner !== "tie!" && obj.winner !== undefined) {
       return (
         <div>{obj.winner + " Won!"}</div>
+      )
+    } else if (obj.winner === "tie!" && obj.winner !== undefined) {
+      return (
+        <div>{"it's a tie!"}</div>
       )
     } else {
       return

@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import helpers from '../utils/AuthHelpers';
-import { Link } from 'react-router';
 import NavLink from './NavLink';
 
-import './App.css';
+import '../Styles/App.css';
 
 class SignUp extends Component {
   constructor(props) {

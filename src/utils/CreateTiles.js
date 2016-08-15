@@ -25,16 +25,16 @@ const createTiles = function(){
     }
   }
   tiles[80].playerOne = true;
-  tiles[79].playerTwo = true;
-
+  tiles[0].playerTwo = true;
 
   // for (let i = 0; i < tiles.length; i++){
-  //   if (i === 0 || i ===  1 || i ===  9 || i ===  80 || i ===  79 || i ===  71){
-  //     tiles[i].crate === false;
-  //   } else if (Math.random() <= 0.5){
-  //     tiles[i].crate === true;
-  //   }
-  // }
+    //   if (i === 0 || i ===  1 || i ===  9 || i ===  80 || i ===  79 || i ===  71){
+    //     tiles[i].crate === false;
+    //   } else if (Math.random() <= 0.5){
+    //     tiles[i].crate === true;
+    //   }
+    // }
+
 
   return tiles;
 

@@ -1,15 +1,12 @@
 import React, {Component} from 'react';
-import ReactDOM from 'react-dom';
 import update from 'react-addons-update'
-import App from './App'
 import createTiles from '../utils/CreateTiles.js';
 import firebaseHelpers from '../utils/AuthHelpers.js';
 import TileContainer from './TileContainer.js';
 import movement from '../utils/Movement.js';
-import { Link } from 'react-router';
-import './Game.css';
+import '../Styles/Game.css';
+import '../Styles/App.css';
 import help from '../utils/helpers.js'
-import helpers from '../utils/AuthHelpers';
 import { browserHistory } from 'react-router';
 
 
@@ -239,10 +236,9 @@ const boom = new Audio("http://audiosoundclips.com/wp-content/uploads/2015/01/8-
 
   render(){
     return(
-
       <div>
         <div className="displayUser">
-          <h2>Hello there {this.state.displayName}!</h2>
+          <h4>Hello there {this.state.displayName}!</h4>
         </div>
         <div className="game">
           <TileContainer tiles={this.state.tiles} />

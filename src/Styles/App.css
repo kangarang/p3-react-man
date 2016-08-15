@@ -1,8 +1,5 @@
 .App {
   text-align: center;
-  background: url("https://media1.giphy.com/avatars/haydiroket.gif");
-  background-size: cover;
-  background-repeat: no-repeat;
   font-family: 'Press Start 2P';
   color: black;
   width: 100vw;
@@ -25,6 +22,7 @@
   color: cornflowerblue;
   padding: 10px;
 }
+
 
 
 ul.nav.nav-tabs {
@@ -59,4 +57,20 @@ ul.nav.nav-tabs {
 .displayUser {
   background-color: black;
 color: cornflowerblue;
+}
+
+.AboutMakers {
+  display: flex;
+  justify-content: space-around;
+  border: 5px solid cornflowerblue;
+  background-color: black;
+  color: cornflowerblue;
+  padding: 80px;
+}
+
+.bottom {
+  background: url("https://media1.giphy.com/avatars/haydiroket.gif");
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100%;
 }

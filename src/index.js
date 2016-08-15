@@ -13,12 +13,12 @@ import LogIn from './Components/LogIn';
 import SignUp from './Components/SignUp';
 import Game from './Components/Game';
 import GameOver from './Components/GameOver';
-import './index.css';
+import './Styles/index.css';
 
 ReactDOM.render (
   <Router history={browserHistory}>
     <Route path="/" component={App}>
-      <IndexRoute component={Home} />
+      <IndexRoute component={AboutGame} />
       <Route path="/bomberman" component={Bomberman}>
         <Route path="/bomberman/high_scores" component={HighScores} />
         <Route path="/bomberman/log-in" component={LogIn} />
@@ -26,7 +26,6 @@ ReactDOM.render (
         <Route path="/bomberman/game" component={Game} />
         <Route path="/bomberman/game-over" component={GameOver} />
       </Route>
-      <Route path="/about_game" component={AboutGame} />
       <Route path="/about_makers" component={AboutMakers} />
 
     </Route>
