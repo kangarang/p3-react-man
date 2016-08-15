@@ -17,32 +17,29 @@ class HighScores extends Component {
     help.showAll().then( res => {
       return res.json()
     }).then( json => {
-      console.log('all responses' + json);
+      let arr = []
+      Object.keys(json).map( single => {
+        let newObje = {}
+        let time = json[single].time
+        time = time.split("T").join(" at: ");
+        time = time.split(".");
+        time = time[0];
+        let initials = json[single].initials
+        newObje.initials = initials
+        newObje.time = time
+        arr.push(newObje)
+      })
       this.setState({
-        scores: [json]
+        scores: arr
       })
     })
   }
 
-  showScores(score) {
+  showScores(score, index) {
     if (score) {
-      Object.keys(score).map( single => {
-        let time = score[single].time
-        time = time.split("T").join(" at: ");
-        time = time.split(".");
-        time = time[0];
-        let initials = score[single].initials
-        if (time && initials) {
-          console.log(time);
-          console.log(initials);
-          return (
-            <div>
-              <br></br>
-              <div>Hello{initials}{"   "}{time}</div>
-            </div>
-          )
-        }
-      })
+      return (
+        <div className="scoress">{score.initials}{"  on  "}{score.time}</div>
+      )
     }
   }
 
@@ -52,16 +49,12 @@ class HighScores extends Component {
   }
 
   render() {
-    let scores = {}
-    if (this.state.scores) {
-      scores = this.state.scores[0]
-    }
     return (
       <div className="HighScores">
         <h2>High Scores</h2>
         <Button onClick={(event) => this.show(event)}>Show All High Scores</Button>
         <Button onClick={(event) => this.logOut(event)}>Log Out</Button>
-        {this.showScores(scores)}
+        {this.state.scores.map( (single, index) => this.showScores(single, index))}
       </div>
     )
   }

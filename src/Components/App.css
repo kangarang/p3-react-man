@@ -9,6 +9,9 @@
   height: 100vh;
 }
 
+.scoress {
+  padding: 5px;
+}
 .Header {
   border: 7px solid black;
   background-color: black;
