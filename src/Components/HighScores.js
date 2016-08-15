@@ -13,9 +13,6 @@ class HighScores extends Component {
     }
   }
 
-  // if (firebaseHelpers.checkUser(App.state.userId) === true) {
-
-
   save(e) {
     e.preventDefault()
     const saveObj = {

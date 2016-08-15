@@ -7,7 +7,6 @@ import movement from '../utils/Movement.js';
 import './Game.css';
 import help from '../utils/helpers.js'
 import helpers from '../utils/AuthHelpers';
-import LogIn from './LogIn'
 import { browserHistory } from 'react-router';
 
 
@@ -40,33 +39,39 @@ class Game extends Component {
       saveObj.user = this.state.userId
       saveObj.winner = this.state.winner
       saveObj.time = new Date()
-      help.saveToUser(saveObj, this.state.userId).then( res => {
-        console.log(res);
-        return res.json()
-      }).then( json => {
+      if (saveObj) {
+        help.saveAnObj(saveObj)
         this.componentWillUnmount()
-        browserHistory.push('/bomberman/high_scores')
-        return console.log("this is the json from saving the highscore", json);
-        // this.setState({
-        //   highScores: json
-        // })
-      })
+        browserHistory.push('/bomberman/game-over')
+      }
 
-    } else if (this.state.winner !== "false") {
-      let saveObj = {}
-      saveObj.winner = this.state.winner
-      saveObj.time = new Date()
-      help.save(saveObj).then( res => {
-        console.log(res);
-        return res.json()
-      }).then( json => {
-        this.componentWillUnmount()
-        browserHistory.push('/bomberman/high_scores')
-        return console.log("this is the json from saving the highscore", json);
-        // this.setState({
-        //   highScores: json
-        // })
-      })
+
+      // help.saveToUser(saveObj, this.state.userId).then( res => {
+      //   console.log("44",res);
+      //   return res.json()
+      // }).then( json => {
+      //   browserHistory.push('/bomberman/game-over')
+      //   this.componentWillUnmount()
+      //
+      //   // this.setState({
+      //   //   highScores: json
+      //   // })
+      // })
+    } else if (this.state.winner !== "false" && !this.state.userId) {
+      // let saveObj = {}
+      // saveObj.winner = this.state.winner
+      // saveObj.time = new Date()
+      // help.save(saveObj).then( res => {
+      //   console.log("59",res);
+      //   return res.json()
+      // }).then( json => {
+      //   browserHistory.push('/bomberman/game-over')
+      //   this.componentWillUnmount()
+      //
+      //   // this.setState({
+      //   //   highScores: json
+      //   // })
+      // })
     }
   };
 

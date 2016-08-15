@@ -12,6 +12,7 @@ import HighScores from './Components/HighScores';
 import LogIn from './Components/LogIn';
 import SignUp from './Components/SignUp';
 import Game from './Components/Game';
+import GameOver from './Components/GameOver';
 import './index.css';
 
 ReactDOM.render (
@@ -23,6 +24,7 @@ ReactDOM.render (
         <Route path="/bomberman/log-in" component={LogIn} />
         <Route path="/bomberman/sign-up" component={SignUp} />
         <Route path="/bomberman/game" component={Game} />
+        <Route path="/bomberman/game-over" component={GameOver} />
       </Route>
       <Route path="/about_game" component={AboutGame} />
       <Route path="/about_makers" component={AboutMakers} />

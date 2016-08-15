@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import './Game.css';
 import NavLink from './NavLink'
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 
 class Bomberman extends Component {
   render() {

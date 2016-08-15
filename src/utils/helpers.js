@@ -1,4 +1,5 @@
 const help = {
+  saved: "",
   save: (dataObj) => {
     const fetchSettings = {
       method: 'POST',
@@ -21,7 +22,13 @@ const help = {
     const url = `https://bomberman-react.firebaseio.com/users/${uid}/high-scores.json`
     return fetch(url, fetchSettings);
   },
-
+  saveAnObj: (saveObj) => {
+    console.log(help.saved);
+    return help.saved = saveObj
+  },
+  grabObj: () => {
+    return help.saved
+  },
   showAll: () => {
     const url = "https://bomberman-react.firebaseio.com/high-scores.json?print=pretty"
     return fetch(url)
