@@ -1,6 +1,6 @@
 .tileContainer {
-  width: 100vw;
-  height: 80vh;
+  width: 65vw;
+  height: 100%;
 }
 .links {
   background-color: black;
@@ -9,8 +9,11 @@
 }
 
 .game {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 100%;
+  height: 80vh;
 }
 
 .bigContainer {
