@@ -3,7 +3,7 @@
   background: url("https://media1.giphy.com/avatars/haydiroket.gif");
   background-size: cover;
   background-repeat: no-repeat;
-  font-family: 'Press Start 2P', cursive;
+  font-family: 'Press Start 2P';
   color: black;
   width: 100vw;
   height: 100vh;
@@ -20,6 +20,12 @@
   padding: 10px;
 }
 
+.homePage {
+  background-color: black;
+  color: cornflowerblue;
+  padding: 10px;
+}
+
 
 ul.nav.nav-tabs {
   background-color: black;
@@ -28,6 +34,11 @@ ul.nav.nav-tabs {
 }
 
 .SignUpBox {
+  background-color: black;
+  color: cornflowerblue;
+  padding: 10px;
+}
+.GameOver {
   background-color: black;
   color: cornflowerblue;
   padding: 10px;
@@ -43,4 +54,9 @@ ul.nav.nav-tabs {
   background-color: black;
   color: cornflowerblue;
   padding: 10px;
+}
+
+.displayUser {
+  background-color: black;
+color: cornflowerblue;
 }

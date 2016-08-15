@@ -1,10 +1,10 @@
 import React from 'react'
+import './App.css';
 
-// this is a functional, stateless component
 
 function Home(props) {
   return(
-    <div><h1>HOME COMPONENT</h1></div>
+    <div className="homePage"><h1>Welcome to our game. Please click the above links to navigate about the site!</h1></div>
   )
 }
 

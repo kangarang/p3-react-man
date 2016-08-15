@@ -37,9 +37,12 @@ class HighScores extends Component {
 
   deleteScore(e) {
     e.preventDefault()
-    const ident = e.target.value
-    const id = e.target.id
-    help.delete(ident)
+    let ident = e.target.value
+    if (ident.user) {
+      help.delete(ident, ident.user)
+    } else {
+      help.delete(ident, ident.uid)
+    }
   }
 
   showScores(score, index) {
@@ -47,7 +50,7 @@ class HighScores extends Component {
       return (
         <div key={index} className="scoress">
           {score.initials}{"  on  "}{score.time}
-          <button onClick={(event) => this.deleteScore(event)} id={score.uid} value={score.user}>DELETE</button>
+          <button onClick={(event) => this.deleteScore(event)} value={score}>DELETE</button>
         </div>
       )
     }

@@ -11,8 +11,8 @@ var config = {
 
 firebaseapp.initializeApp(config)
 
-const firebaseUtils = {
-  signUp: (email, pass) => {
+const createUser = {
+  signUp: (email, pass, data) => {
     console.log("signing up...", email, pass);
     firebase.auth().createUserWithEmailAndPassword(email, pass).catch(err => {
       if (err) {
@@ -22,9 +22,14 @@ const firebaseUtils = {
       console.log("helper",res);
       firebase.database().ref("users/"+res.uid).set({
         uid: res.uid,
+        displayName: data.userName
       })
       window.localStorage.setItem("uid", res.uid);
       console.info(window.localStorage.getItem("uid"));
+      window.localStorage.setItem("displayName", data.userName);
+      console.info(window.localStorage.getItem("displayName"));
+
+
       }
     )
   },
@@ -32,11 +37,11 @@ const firebaseUtils = {
   logIn: (email, pass) => {
     console.log("loggging in...", email, pass);
     firebase.auth().signInWithEmailAndPassword(email, pass).catch(err => {
-        // Handle Errors here.
-        if (err) {
+      // Handle Errors here.
+      if (err) {
 
-          console.error(err.code, err.message)
-        }
+        console.error(err.code, err.message)
+      }
     }).then(res => {
       console.log("logged in...", res);
       window.localStorage.setItem("uid", res.uid);
@@ -71,4 +76,4 @@ const firebaseUtils = {
 
 
 
-export default firebaseUtils;
+export default createUser;

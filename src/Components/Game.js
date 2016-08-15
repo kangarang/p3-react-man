@@ -6,6 +6,7 @@ import createTiles from '../utils/CreateTiles.js';
 import firebaseHelpers from '../utils/AuthHelpers.js';
 import TileContainer from './TileContainer.js';
 import movement from '../utils/Movement.js';
+import { Link } from 'react-router';
 import './Game.css';
 import help from '../utils/helpers.js'
 import helpers from '../utils/AuthHelpers';
@@ -18,6 +19,7 @@ class Game extends Component {
     this.state = {
       tiles: [],
       userId: localStorage.getItem("uid"),
+      displayName: localStorage.getItem("displayName"),
       winner: "false"
     }
   };
@@ -72,6 +74,7 @@ class Game extends Component {
     window.addEventListener('keydown', this.handleKeyDown.bind(this), false)
     this.setState({tiles: createTiles()});
     this.fireTimer();
+    this.checkIfUser(this.state.userId)
   }; //Adds event listener and setsState of gameboard
 
   componentWillUnmount() {
@@ -122,6 +125,9 @@ class Game extends Component {
   }; //Get explosion "radius"
 
   explosion(bombIndex){
+
+const boom = new Audio("http://audiosoundclips.com/wp-content/uploads/2015/01/8-Bit-SFX_Explosion_02.mp3");
+    //Provided by Jesus Lastra via audiosoundclips.com under the CC license
     const tiles = this.state.tiles;
     const showMe = this.fourWay(tiles[bombIndex]);
     this.setState({
@@ -159,6 +165,7 @@ class Game extends Component {
         }; //End block radius 2
       } //End block radius 1
     } //End loop
+    boom.play();
   }; //End Explosion
 
   handleKeyDown(event){
@@ -211,13 +218,40 @@ class Game extends Component {
       } else return
     }; //end movement playerOne movement
 
+  // saveUserData() {
+  //   const data = {
+  //     saved : this.state.text
+  //   }
+  //   console.log(this.state.text)
+  //   helpers.saveWinningUser(this.state.userId, data)
+  //   .then(res => {
+  //     console.log(res)
+  //     })
+  //   }
+
+  //to check whether there is a user or not
+  checkIfUser() {
+    if (this.state.userId) {
+      firebaseHelpers.checkUser(this.state.userId)
+      console.log("YAY! You're in!")
+    }
+  }
+
   render(){
     return(
-      <div className="game">
-        <TileContainer tiles={this.state.tiles} />
+
+      <div>
+        <div className="displayUser">
+          <h2>Hello there {this.state.displayName}!</h2>
+        </div>
+        <div className="game">
+          <TileContainer tiles={this.state.tiles} />
+        </div>
       </div>
     )
   }; //Container worried about one state that changes based on user input.
+
+
 }
 
 export default Game;

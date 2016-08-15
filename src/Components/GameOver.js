@@ -26,12 +26,19 @@ class GameOver extends Component {
     }
   }
 
+  // getData(event){
+  //   const get =  firebase.database().ref('users/' + this.state.userID).once('value').then(function(snapshot) {
+  //     snapshot.val().username;
+  //     console.log(get)
+  //   })
+  // }
+
   whoWon(obj) {
-    if (obj.winner !== "tie") {
+    if (obj.winner !== "tie" && obj.winner !== undefined) {
       return (
-        <div>{obj.winner + "Won!"}</div>
+        <div>{obj.winner + " Won!"}</div>
       )
-    } else{
+    } else {
       return
     }
   }

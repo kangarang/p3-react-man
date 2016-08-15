@@ -9,16 +9,20 @@ class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      userName: "",
       email: "",
       pw: ""
     }
   }
 
-  makeUser(event) {
+  makeUser(event){
     event.preventDefault();
-    console.log("clicked: ", this.state.email, this.state.pw);
-    helpers.signUp(this.state.email, this.state.pw);
-    console.log("INFO HAS BEEN SENT")
+
+    let data = {
+      userName: this.state.userName
+    }
+    console.log(this.state.email,this.state.pw);
+    helpers.signUp(this.state.email,this.state.pw,data)
   }
 
   render() {
@@ -28,6 +32,10 @@ class SignUp extends Component {
         <div>
           <form className="form-inline">
             <div className="form-group">
+              <label className="sr-only">Name</label>
+              <input type="text" className="form-control" id="exampleInputEmail3" placeholder="Name" onChange={(event) => this.setState({userName: event.target.value})} />
+            </div>
+            <div className="form-group">
               <label className="sr-only">Email address</label>
               <input type="email" className="form-control" id="exampleInputEmail3" placeholder="Email" onChange={(event) => this.setState({email: event.target.value})} />
             </div>
@@ -35,12 +43,15 @@ class SignUp extends Component {
               <label className="sr-only">Password</label>
               <input type="password" className="form-control" id="exampleInputPassword3" placeholder="Password" onChange={(event) => this.setState({pw: event.target.value})} />
             </div>
+
             <button type="submit" className="btn btn-default" onClick={(event) => this.makeUser(event)}><NavLink to="/bomberman/log-in">Sign up</NavLink></button>
+
           </form>
         </div>
       </div>
     )
   }
 }
+
 
 export default SignUp;

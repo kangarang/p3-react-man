@@ -23,13 +23,13 @@ const help = {
     const url = `https://bomberman-react.firebaseio.com/users/${uid}/high-scores.json`
     return fetch(url, fetchSettings);
   },
-  delete: (dataObj) => {
+  delete: (dataObj, user) => {
     const fetchSettings = {
       method: 'DELETE',
       headers: new Headers({
         'Content-Type': 'application/json'
       }),
-      body: JSON.stringify(dataObj)
+      body: JSON.stringify(dataObj, user)
     }
     const url = "https://bomberman-react.firebaseio.com/non-user-high-scores.json"
     return fetch(url, fetchSettings)
@@ -48,6 +48,10 @@ const help = {
   showAll: () => {
     const url = "https://bomberman-react.firebaseio.com/non-user-high-scores.json?print=pretty"
     return fetch(url)
+  },
+  showAllUser: (uid) => {
+    const url = `https://bomberman-react.firebaseio.com/users/${uid}/high-scores.json?print=pretty`
+    return fetch(url, uid)
   }
 }
 
