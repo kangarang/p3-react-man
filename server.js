@@ -12,7 +12,8 @@ app.get('*', (req, res) =>
   res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
 )
 
-app.listen(PORT, () =>
-  // let port = server.address().port
+app.listen(PORT, function() {
+  let port = server.address().port
   console.log('listen to events on "port" ', port);
-)
+
+})
