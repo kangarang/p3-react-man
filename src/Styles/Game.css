@@ -16,6 +16,7 @@
   height: 80vh;
 }
 
+
 .bigContainer {
   display: flex;
   flex-direction: row;
@@ -28,8 +29,7 @@
 }
 
 .grass {
-  background-color: green;
-  /*background-image: url('http://opengameart.org/sites/default/files/grass03_0.png');*/
+  background-image: url('http://i.imgur.com/8VvWcuc.jpg');
   height: 11%;
   width: 11%;
   float: left;
@@ -45,8 +45,7 @@
 }
 
 .cement {
-  background: green;
-  /*background-image: url('http://opengameart.org/sites/default/files/grass03_0.png');*/
+  background-image: url('http://i.imgur.com/8VvWcuc.jpg');
   height: 11%;
   width: 11%;
   float: left;
@@ -60,11 +59,15 @@
 }
 
 .crate{
-  background: green;
-  /*background-image: url('http://opengameart.org/sites/default/files/grass03_0.png');*/
+  background-image: url('http://i.imgur.com/8VvWcuc.jpg');
   height: 11%;
   width: 11%;
   float: left;
+}
+.bomb{
+  background-image: url('http://i.imgur.com/8VvWcuc.jpg');
+  height: 100%;
+  width: 60%;
 }
 
 .iconCrate{
