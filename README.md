@@ -31,3 +31,14 @@ Bomb SFX
 Music
   https://soundcloud.com/eric-skiff/all-of-us?in=eric-skiff/sets/resistor-anthems
   - Provided by Eric Skiff via soundcloud.com/eric-skiff under the CC license
+  
+Gif
+  https://media1.giphy.com/avatars/haydiroket.gif
+  - From http://giphy.com/haydiroket
+
+About-Game Effect 
+  npm react-atv : https://www.npmjs.com/package/react-atv
+  - By https://www.npmjs.com/~herrkris
+  
+All other icons and imagery
+  - http://www.shutterstock.com/
