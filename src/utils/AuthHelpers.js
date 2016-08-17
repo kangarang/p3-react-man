@@ -2,12 +2,21 @@ import firebaseapp from 'firebase';
 import firebase from 'firebase';
 import { browserHistory } from 'react-router';
 
-var config = {
-    apiKey: "AIzaSyDGJmgqfJI5V6cnGw0L5AuqinK3noWLXd0",
-    authDomain: "bomberman-react.firebaseapp.com",
-    databaseURL: "https://bomberman-react.firebaseio.com",
-    storageBucket: "bomberman-react.appspot.com",
-  };
+// const url = "http://localhost:3000/" // local mode
+const url = "https://peaceful-headland-12692.herokuapp.com/" // deployment mode
+const FIREBASE_API_KEY = fetch(url).then( res => {
+  console.log(res.json())
+  return res.json()
+}).then( (json) => {
+  return json
+})
+
+const config = {
+  apiKey: FIREBASE_API_KEY,
+  authDomain: "bomberman-react.firebaseapp.com",
+  databaseURL: "https://bomberman-react.firebaseio.com",
+  storageBucket: "bomberman-react.appspot.com",
+}
 
 firebaseapp.initializeApp(config)
 
