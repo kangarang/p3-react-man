@@ -1,9 +1,10 @@
-import firebaseapp from 'firebase';
+cdimport firebaseapp from 'firebase';
 import firebase from 'firebase';
 import { browserHistory } from 'react-router';
 
 // const url = "http://localhost:3000/" // local mode
-const url = "https://peaceful-headland-12692.herokuapp.com/" // deployment mode
+// const url = "http://localhost:8080/" // local mode
+// const url = "https://peaceful-headland-12692.herokuapp.com/" // deployment mode
 const FIREBASE_API_KEY = fetch(url).then( res => {
   console.log(res.json())
   return res.json()

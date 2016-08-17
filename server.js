@@ -5,7 +5,7 @@ const cors = require('cors');
 const app = express();
 const path = require('path');
 // const url = 'http://localhost:3000' // local mode
-const url = "https://peaceful-headland-12692.herokuapp.com/" // deployment mode
+// const url = "https://peaceful-headland-12692.herokuapp.com/" // deployment mode
 const FIREBASE_API_KEY = process.env.FIREBASE_API_KEY
 
 app.use(cors());
