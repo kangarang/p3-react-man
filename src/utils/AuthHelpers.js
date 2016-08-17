@@ -1,4 +1,4 @@
-cdimport firebaseapp from 'firebase';
+import firebaseapp from 'firebase';
 import firebase from 'firebase';
 import { browserHistory } from 'react-router';
 
