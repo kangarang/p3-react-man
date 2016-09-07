@@ -30,6 +30,7 @@
 
 .grass {
   background-image: url('http://i.imgur.com/8VvWcuc.jpg');
+  background-size: cover;
   height: 11%;
   width: 11%;
   float: left;
@@ -46,6 +47,7 @@
 
 .cement {
   background-image: url('http://i.imgur.com/8VvWcuc.jpg');
+  background-size: cover;
   height: 11%;
   width: 11%;
   float: left;
@@ -60,12 +62,14 @@
 
 .crate{
   background-image: url('http://i.imgur.com/8VvWcuc.jpg');
+  background-size: cover;
   height: 11%;
   width: 11%;
   float: left;
 }
 .bomb{
   background-image: url('http://i.imgur.com/8VvWcuc.jpg');
+  background-size: cover;
   height: 100%;
   width: 60%;
 }

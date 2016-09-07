@@ -9,7 +9,7 @@ const help = {
       }),
       body: JSON.stringify(dataObj)
     }
-    const url = "https://bomberman-react.firebaseio.com/non-user-high-scores.json"
+    const url = "https://react-man.firebaseio.com/non-user-high-scores.json"
     return fetch(url, fetchSettings);
   },
   saveToUser: (dataObj, uid) => {
@@ -20,7 +20,7 @@ const help = {
       }),
       body: JSON.stringify(dataObj)
     }
-    const url = `https://bomberman-react.firebaseio.com/users/${uid}/high-scores.json`
+    const url = `https://react-man.firebaseio.com/users/${uid}/high-scores.json`
     return fetch(url, fetchSettings);
   },
   delete: (dataObj, user) => {
@@ -31,7 +31,7 @@ const help = {
       }),
       body: JSON.stringify(dataObj, user)
     }
-    const url = "https://bomberman-react.firebaseio.com/non-user-high-scores.json"
+    const url = "https://react-man.firebaseio.com/non-user-high-scores.json"
     return fetch(url, fetchSettings)
   },
   saveAnObj: (saveObj) => {
@@ -46,11 +46,11 @@ const help = {
     return help.saved
   },
   showAll: () => {
-    const url = "https://bomberman-react.firebaseio.com/non-user-high-scores.json?print=pretty"
+    const url = "https://react-man.firebaseio.com/non-user-high-scores.json?print=pretty"
     return fetch(url)
   },
   showAllUser: (uid) => {
-    const url = `https://bomberman-react.firebaseio.com/users/${uid}/high-scores.json?print=pretty`
+    const url = `https://react-man.firebaseio.com/users/${uid}/high-scores.json?print=pretty`
     return fetch(url, uid)
   }
 }
