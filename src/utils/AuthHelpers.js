@@ -37,8 +37,6 @@ const createUser = {
       console.info(window.localStorage.getItem("uid"));
       window.localStorage.setItem("displayName", data.userName);
       console.info(window.localStorage.getItem("displayName"));
-
-
       }
     )
   },
