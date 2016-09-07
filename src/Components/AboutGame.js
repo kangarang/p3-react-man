@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import NavLink from './NavLink';
 import '../Styles/AboutGame.css';
 import AtvImg from 'react-atv-img';
 import '../Styles/App.css';

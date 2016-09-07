@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../Styles/App.css';
-import { Link } from 'react-router';
 
 class AboutMakers extends Component {
   render() {

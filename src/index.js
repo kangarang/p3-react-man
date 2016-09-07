@@ -4,7 +4,6 @@ import { Router, Route, browserHistory, IndexRoute } from 'react-router';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/css/bootstrap-theme.css';
 import App from './Components/App';
-import Home from './Components/Home';
 import AboutMakers from './Components/AboutMakers';
 import AboutGame from './Components/AboutGame';
 import Bomberman from './Components/Bomberman';

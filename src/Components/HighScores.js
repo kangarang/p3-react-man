@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import help from '../utils/helpers.js'
 import '../Styles/App.css';
 import { Button } from 'react-bootstrap';
-// import helpers from '../utils/AuthHelpers';
 
 class HighScores extends Component {
   constructor(props) {
@@ -28,7 +27,7 @@ class HighScores extends Component {
           let initials = json[single].initials
           newObje.initials = initials
           newObje.time = time
-          arr.push(newObje)
+          return arr.push(newObje)
         })
         this.setState({
           scores: arr
