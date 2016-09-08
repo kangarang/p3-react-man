@@ -10,7 +10,6 @@ import { browserHistory } from 'react-router';
 
 
 class Game extends Component {
-
     constructor(props) {
         super(props)
         this.state = {
