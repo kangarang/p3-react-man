@@ -39,7 +39,7 @@ class SignUp extends Component {
                         <input type="password" className="form-control" id="exampleInputPassword3" placeholder="Password" onChange={(event) => this.setState({pw: event.target.value})} />
                     </div>
 
-                    <button type="submit" className="btn btn-default" onClick={(event) => this.makeUser(event)}><NavLink to="/bomberman/log-in">Sign up</NavLink></button>
+                    <NavLink to="/bomberman/log-in"><button type="submit" className="btn btn-default" onClick={(event) => this.makeUser(event)}>Sign up</button></NavLink>
 
                 </form>
             </div>

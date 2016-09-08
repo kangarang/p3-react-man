@@ -1,11 +1,28 @@
-.rootDivStyle {
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
+.aboutGame {
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
     background-repeat: no-repeat;
+    width: 100%;
+    height: 100%;
+}
+
+.about-header {
+  background-color: black;
+  color: cornflowerblue;
+  width: 100vw;
+}
+
+.atvContainer {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.atv {
+    height: 70%;
+    width: 80%;
 }

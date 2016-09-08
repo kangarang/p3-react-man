@@ -14,8 +14,8 @@ class LogIn extends Component {
         }
     }
 
-    signIn(event){
-        event.preventDefault();
+    signIn(e){
+        e.preventDefault();
         helpers.logIn(this.state.email,this.state.pw)
     }
 
@@ -27,13 +27,13 @@ class LogIn extends Component {
                 <form className="form-inline">
                     <div className="form-group">
                         <label className="sr-only">Email address</label>
-                        <input type="email" className="form-control" id="exampleInputEmail3" placeholder="Email" onChange={(event) => this.setState({email: event.target.value})} />
+                        <input type="email" className="form-control" id="exampleInputEmail3" placeholder="Email" onChange={(e) => this.setState({email: e.target.value})} />
                     </div>
                     <div className="form-group">
                         <label className="sr-only">Password</label>
-                        <input type="password" className="form-control" id="exampleInputPassword3" placeholder="Password" onChange={(event) => this.setState({pw: event.target.value})} />
+                        <input type="password" className="form-control" id="exampleInputPassword3" placeholder="Password" onChange={(e) => this.setState({pw: e.target.value})} />
                     </div>
-                    <button type="submit" className="btn btn-default" onClick={(event) => this.signIn(event)}><NavLink to="/bomberman/game">Let's do this!</NavLink></button>
+                    <NavLink to="/bomberman/game"><button type="submit" className="btn btn-default" onClick={(e) => this.signIn(e)}>Let's do this!</button></NavLink>
                 </form>
             </div>
         )

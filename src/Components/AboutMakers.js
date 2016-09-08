@@ -5,32 +5,26 @@ class AboutMakers extends Component {
     render() {
         return (
             <div className="AboutMakers">
-                <div>
+                <div className="third">
                     <h2>Isaac</h2>
                     <img alt="" src="http://i.imgur.com/NEXrR4M.png" />
+                    <a href="https://www.linkedin.com/in/isaackang">LinkedIn</a>
                     <br></br>
-                    <a href="https://www.linkedin.com/in/isaackang">linkedin</a>
-                    <br></br>
-                    <br></br>
-                    <a href="https://github.com/kangarang">Git</a>
+                    <a href="https://github.com/kangarang">GitHub</a>
                 </div>
-                <div>
+                <div className="third">
                     <h2>Daniel</h2>
                     <img alt="" src="http://i.imgur.com/q23PkKQ.png" />
+                    <a href="https://www.linkedin.com/in/danielyochumjr">LinkedIn</a>
                     <br></br>
-                    <a href="https://www.linkedin.com/in/danielyochumjr">linkedin</a>
-                    <br></br>
-                    <br></br>
-                    <a href="https://github.com/dannersy">Git</a>
+                    <a href="https://github.com/dannersy">GitHub</a>
                 </div>
-                <div>
+                <div className="third">
                     <h2>Shreiya</h2>
                     <img alt="" src="http://i.imgur.com/4f5nmF3.png"></img>
+                    <a href="https://www.linkedin.com/in/shreiya">LinkedIn</a>
                     <br></br>
-                    <a href="https://www.linkedin.com/in/shreiya">linkedin</a>
-                    <br></br>
-                    <br></br>
-                    <a href="https://github.com/Shreiya">Git</a>
+                    <a href="https://github.com/Shreiya">GitHub</a>
                 </div>
             </div>
         )
