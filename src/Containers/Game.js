@@ -1,11 +1,13 @@
 import React, {Component} from 'react';
 import update from 'react-addons-update'
-import createTiles from '../utils/CreateTiles.js';
-import TileContainer from './TileContainer.js';
-import movement from '../utils/Movement.js';
-import '../Styles/Game.css';
-import help from '../utils/helpers.js'
 import { browserHistory } from 'react-router';
+
+import createTiles from '../utils/CreateTiles.js';
+import movement from '../utils/Movement.js';
+
+import TileContainer from './TileContainer.js';
+
+import '../Styles/Game.css';
 
 
 class Game extends Component {
@@ -28,11 +30,11 @@ class Game extends Component {
             return
         } else if (playerOne.length) {
             this.setState({
-                winner: "player one"
+                winner: "Player 1"
             })
         } else if (playerTwo.length) {
             this.setState({
-                winner: "player two"
+                winner: "Player 2"
             })
         } else {
             this.setState({
@@ -41,20 +43,16 @@ class Game extends Component {
         }
 
         if (this.state.winner !== "false") {
-
-            let saveObj = {}
+            const App = this
+            const date = new Date()
+            window.sessionStorage.setItem('winner', this.state.winner)
+            window.sessionStorage.setItem('date', date.getDate())
+            window.sessionStorage.setItem('month', date.getMonth())
+            window.sessionStorage.setItem('year', date.getFullYear())
+            clearInterval(App.fireTimerID)
+            browserHistory.push('/game-over')
             // const HandleKey = this.handleKeyDown.bind(this)
             // window.removeEventListener('keydown', HandleKey, false);
-            saveObj.winner = this.state.winner
-            saveObj.time = new Date()
-
-            if (saveObj) {
-                const savedd = help.saveAnObj(saveObj)
-                clearInterval(this.fireTimerID)
-                if (savedd) {
-                    browserHistory.push('/game-over')
-                }
-            }
         }
     };
 
@@ -108,7 +106,6 @@ class Game extends Component {
         },3000)
     }; //Start bomb/explosion timer
 
-
     fourWay(bCoords) {
         const exCoords = []
         exCoords.push([{x: bCoords.x + 1, y: bCoords.y},{x: bCoords.x + 2, y: bCoords.y}])
@@ -117,7 +114,6 @@ class Game extends Component {
         exCoords.push([{x: bCoords.x, y: bCoords.y - 1},{x: bCoords.x, y: bCoords.y - 2}])
         return exCoords;
     }; //Get explosion "radius"
-
 
     explosion(bombIndex) {
 
@@ -171,8 +167,7 @@ class Game extends Component {
         boom.play();
     }; //End Explosion
 
-
-    handleKeyDown(event){
+    handleKeyDown(event) {
         if (event.code === "KeyW" || event.code === "KeyE" || event.code === "KeyA" || event.code === "KeyD" || event.code === "KeyS") {
             let position = this.state.tiles.filter(tile => tile.playerTwo === true);
             let newPosition = movement(event, position[0]);
@@ -246,8 +241,7 @@ class Game extends Component {
         } else return
     }; //end movement playerOne movement
 
-
-    render(){
+    render() {
         return(
             <div>
                 <div className="displayUser">

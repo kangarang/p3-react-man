@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import '../Styles/App.css';
 import help from '../utils/helpers.js'
+import {browserHistory} from 'react-router'
 
 class GameOver extends Component {
     constructor(props){
@@ -12,52 +13,40 @@ class GameOver extends Component {
 
     handleSubmit(e) {
         e.preventDefault()
-        const savedObj = help.grabObj()
-        console.log(savedObj.winner + "wins!");
+
+        const savedObj = {
+            winner: window.sessionStorage.winner,
+            date: window.sessionStorage.date,
+            month: window.sessionStorage.month,
+            year: window.sessionStorage.year
+        }
+
         const initials = this.state.text
+
         if (savedObj) {
             savedObj.initials = initials
-            const test = help.save(savedObj)
-            console.log(test);
+            help.save(savedObj)
+            browserHistory.push('/high-scores')
         }
     }
 
-    // getData(event){
-    //   const get =  firebase.database().ref('users/' + this.state.userID).once('value').then(function(snapshot) {
-    //     snapshot.val().username;
-    //     console.log(get)
-    //   })
-    // }
-
-    whoWon(obj) {
-        if (obj.winner !== "tie!" && obj.winner !== undefined) {
-            return (
-                <div>{obj.winner + " Won!"}</div>
-            )
-        } else if (obj.winner === "tie!" && obj.winner !== undefined) {
-            return (
-                <div>{"it's a tie!"}</div>
-            )
+    whoWon(winner) {
+        if (winner === "tie!") {
+            return <div>It's a tie!</div>
         } else {
-            return
+            return <div>{winner} Won!</div>
         }
-    }
-
-    handleChange(e) {
-        this.setState({
-            text: e.target.value
-        })
     }
 
     render() {
-        const savedObj = help.grabObj()
+        const winner = window.sessionStorage.winner
 
         return (
             <div className="GameOver">
                 <h1>GAME OVER</h1>
-                <h3>{this.whoWon(savedObj)}</h3>
-                <form onSubmit={(event) => this.handleSubmit(event)}>
-                    <input onChange={(event) => this.handleChange(event)} type="text" placeholder="input your initials" maxLength="3"></input>
+                <h3>{winner ? this.whoWon(winner) : null}</h3>
+                <form onSubmit={(e) => this.handleSubmit(e)}>
+                    <input onChange={(e) => this.setState({text: e.target.value})} type="text" placeholder="input your initials" maxLength="3"></input>
                     <button>{"Submit to High Scores"}</button>
                 </form>
             </div>
