@@ -1,0 +1,34 @@
+.container {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0;
+}
+
+.top {
+    background-color: black;
+    color: cornflowerblue;
+    width: 100%;
+    margin: 0;
+    padding: 10px;
+}
+
+.HighScores {
+    background-color: black;
+    color: cornflowerblue;
+    padding: 10px;
+    width: 50%;
+}
+
+.butt {
+    padding: 8px;
+}
+.deleter {
+    padding: 4px 10px;
+}
+.score {
+    border: 1px solid cornflowerblue;
+    padding: 8px;
+}

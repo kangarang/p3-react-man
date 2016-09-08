@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import '../Styles/App.css';
+import '../Styles/GameOver.css';
 import help from '../utils/helpers.js'
 import {browserHistory} from 'react-router'
 

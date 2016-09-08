@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import help from '../utils/helpers.js'
-import '../Styles/App.css';
 import { Button } from 'react-bootstrap';
+
+import '../Styles/HighScores.css';
 
 class HighScores extends Component {
     constructor(props) {
@@ -24,7 +25,6 @@ class HighScores extends Component {
             if (json) {
                 Object.keys(json).map( single => {
                     let newObje = {}
-
                     newObje.initials = json[single].initials
                     const date = json[single].date
                     const year = json[single].year
@@ -33,10 +33,10 @@ class HighScores extends Component {
                     newObje.when = month + "/" + date + "/" + year
                     return arr.push(newObje)
                 })
-                this.setState({
-                    scores: arr
-                })
             }
+            this.setState({
+                scores: arr
+            })
         })
     }
 
@@ -51,20 +51,24 @@ class HighScores extends Component {
 
     showScores(score, index) {
         return (
-            <div key={index} className="scoress">
+            <div key={index} className="score">
                 {score.initials}{"  on  "}{score.when}
                 {" "}
-                <Button onClick={(event) => this.deleteScore(event)} value={score.identity}>DELETE</Button>
+                <Button className="deleter" onClick={(event) => this.deleteScore(event)} value={score.identity}>DELETE</Button>
             </div>
         )
     }
 
     render() {
         return (
-            <div className="HighScores">
-                <h2>High Scores</h2>
-                <Button onClick={(e) => this.show(e)}>Show Scores</Button>
-                {this.state.scores.map( (single, index) => this.showScores(single, index))}
+            <div className="container">
+                <h2 className="top">High Scores</h2>
+                <div className="HighScores">
+                    <div className="butt">
+                        <Button onClick={(e) => this.show(e)}>Show Scores</Button>
+                    </div>
+                    {this.state.scores.map( (single, index) => this.showScores(single, index))}
+                </div>
             </div>
         )
     }
