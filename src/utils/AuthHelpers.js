@@ -10,7 +10,7 @@ const config = {
 
 firebase.initializeApp(config);
 
-const createUser = {
+export default {
 
     signUp: (email, pass, data) => {
         console.log("signing up...", email, pass);
@@ -69,5 +69,3 @@ const createUser = {
         });
     }
 }
-
-export default createUser;
