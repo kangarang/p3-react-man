@@ -25,8 +25,9 @@ class GameOver extends Component {
 
         if (savedObj) {
             savedObj.initials = initials
-            help.save(savedObj)
-            browserHistory.push('/high-scores')
+            help.save(savedObj).then( res => {
+                browserHistory.push('/high-scores')
+            })
         }
     }
 
