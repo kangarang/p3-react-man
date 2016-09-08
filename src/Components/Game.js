@@ -5,7 +5,6 @@ import firebaseHelpers from '../utils/AuthHelpers.js';
 import TileContainer from './TileContainer.js';
 import movement from '../utils/Movement.js';
 import '../Styles/Game.css';
-import '../Styles/App.css';
 import help from '../utils/helpers.js'
 import { browserHistory } from 'react-router';
 
@@ -57,7 +56,7 @@ class Game extends Component {
                 const savedd = help.saveAnObj(saveObj)
                 clearInterval(this.fireTimerID)
             if (savedd) {
-                browserHistory.push('/bomberman/game-over')
+                browserHistory.push('/react-man/game-over')
             }
 
             }
@@ -74,7 +73,7 @@ class Game extends Component {
                 const savedd = help.saveAnObj(saveObj)
                 clearInterval(this.fireTimerID)
                 if (savedd) {
-                    browserHistory.push('/bomberman/game-over')
+                    browserHistory.push('/react-man/game-over')
                 }
             }
         }
@@ -293,9 +292,6 @@ class Game extends Component {
     render(){
         return(
             <div>
-                <div className="displayUser">
-                    <h4>Hello there {this.state.displayName}!</h4>
-                </div>
                 <div className="game">
                     <TileContainer tiles={this.state.tiles} />
                 </div>

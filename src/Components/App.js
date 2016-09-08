@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import NavLink from './NavLink';
 import '../Styles/App.css';
-import '../Styles/Game.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/css/bootstrap-theme.css';
 
 class App extends Component {
     render() {
@@ -11,7 +12,7 @@ class App extends Component {
                 <nav className="nav">
                     <NavLink className="navLinks" to='/' onlyActiveOnIndex>Home</NavLink>
                     <NavLink className="navLinks" to='/about_makers' onlyActiveOnIndex>About The Makers</NavLink>
-                    <NavLink className="navLinks" to='/bomberman' onlyActiveOnIndex>REACT MAN</NavLink>
+                    <NavLink className="navLinks" to='/react-man/game' onlyActiveOnIndex>REACT MAN</NavLink>
                 </nav>
                 <div className='bottom'>
                     {this.props.children}

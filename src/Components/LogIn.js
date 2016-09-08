@@ -33,7 +33,7 @@ class LogIn extends Component {
                         <label className="sr-only">Password</label>
                         <input type="password" className="form-control" id="exampleInputPassword3" placeholder="Password" onChange={(e) => this.setState({pw: e.target.value})} />
                     </div>
-                    <NavLink to="/bomberman/game"><button type="submit" className="btn btn-default" onClick={(e) => this.signIn(e)}>Let's do this!</button></NavLink>
+                    <NavLink to="/react-man/game"><button type="submit" className="btn btn-default" onClick={(e) => this.signIn(e)}>Let's do this!</button></NavLink>
                 </form>
             </div>
         )

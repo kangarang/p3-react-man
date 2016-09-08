@@ -74,10 +74,7 @@
   padding: 10px;
 }
 
-.displayUser {
-    background-color: black;
-    color: cornflowerblue;
-}
+
 
 .AboutMakers {
   display: flex;
@@ -91,5 +88,5 @@
 .third {
     display: flex;
     flex-direction: column;
-    padding-bottom: 75%
+    padding-bottom: 75%;
 }

@@ -20,17 +20,6 @@
 }
 
 
-.bigContainer {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: flex-start;
-  width: 100vw;
-  height: 20%;
-  background-color: black;
-  padding: 15px;
-}
-
 .grass {
   background-image: url('http://i.imgur.com/8VvWcuc.jpg');
   background-size: cover;
@@ -81,9 +70,4 @@
   height: 98%;
   width: 98%;
   float: left;
-}
-
-.displayUser {
-  margin: 0;
-  padding: 5px;
 }
