@@ -3,6 +3,12 @@
   height: 100%;
 }
 
+.displayUser {
+    background-color: black;
+    color: cornflowerblue;
+    margin: 0;
+    padding: 5px;
+}
 .links {
   background-color: black;
   height: 100%;

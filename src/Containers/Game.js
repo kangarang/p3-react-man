@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import update from 'react-addons-update'
 import createTiles from '../utils/CreateTiles.js';
-import firebaseHelpers from '../utils/AuthHelpers.js';
 import TileContainer from './TileContainer.js';
 import movement from '../utils/Movement.js';
 import '../Styles/Game.css';
@@ -11,13 +10,10 @@ import { browserHistory } from 'react-router';
 
 class Game extends Component {
 
-
     constructor(props) {
         super(props)
         this.state = {
             tiles: [],
-            userId: localStorage.getItem("uid"),
-            displayName: localStorage.getItem("displayName"),
             winner: "false"
         }
     };
@@ -44,29 +40,11 @@ class Game extends Component {
             })
         }
 
-        if (this.state.winner !== "false" && this.state.userId) {
+        if (this.state.winner !== "false") {
 
             let saveObj = {}
             // const HandleKey = this.handleKeyDown.bind(this)
             // window.removeEventListener('keydown', HandleKey, false);
-            saveObj.user = this.state.userId
-            saveObj.winner = this.state.winner
-            saveObj.time = new Date()
-
-            if (saveObj) {
-                const savedd = help.saveAnObj(saveObj)
-                clearInterval(this.fireTimerID)
-            if (savedd) {
-                browserHistory.push('/react-man/game-over')
-            }
-
-            }
-
-        } else if (this.state.winner !== "false" && !this.state.userId) {
-          // const HandleKey = this.handleKeyDown.bind(this)
-          // window.removeEventListener('keydown', HandleKey, false);
-
-            let saveObj = {}
             saveObj.winner = this.state.winner
             saveObj.time = new Date()
 
@@ -74,7 +52,7 @@ class Game extends Component {
                 const savedd = help.saveAnObj(saveObj)
                 clearInterval(this.fireTimerID)
                 if (savedd) {
-                    browserHistory.push('/react-man/game-over')
+                    browserHistory.push('/game-over')
                 }
             }
         }
@@ -86,7 +64,6 @@ class Game extends Component {
             tiles: createTiles()
         });
         this.fireTimer();
-        this.checkIfUser(this.state.userId)
     }; //Adds event listener and setsState of gameboard
 
     componentWillUnmount() {
@@ -269,30 +246,13 @@ class Game extends Component {
         } else return
     }; //end movement playerOne movement
 
-    // saveUserData() {
-    //   const data = {
-    //     saved : this.state.text
-    //   }
-    //   console.log(this.state.text)
-    //   helpers.saveWinningUser(this.state.userId, data)
-    //   .then(res => {
-    //     console.log(res)
-    //     })
-    //   }
-
-
-    //to check whether there is a user or not
-    checkIfUser() {
-        if (this.state.userId) {
-            firebaseHelpers.checkUser(this.state.userId)
-            console.log("YAY! You're in!")
-        }
-    };
-
 
     render(){
         return(
             <div>
+                <div className="displayUser">
+                    <h4>Welcome to REACT MAN!</h4>
+                </div>
                 <div className="game">
                     <TileContainer tiles={this.state.tiles} />
                 </div>

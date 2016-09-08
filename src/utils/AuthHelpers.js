@@ -46,20 +46,6 @@ export default {
         })
     },
 
-    checkUser: function(uid) {
-        firebase.auth().onAuthStateChanged(function(uid) {
-            if (uid) {
-                return true
-                // User is signed in.
-            } else {
-                alert("Youre not in!")
-                const path = `/log-in`
-                return browserHistory.push(path)
-                // No user is signed in.
-            }
-        });
-    },
-
     signOut: function() {
         firebase.auth().signOut().then(function() {
             console.log("logged out?");
