@@ -22,9 +22,6 @@ class Game extends Component {
         }
     };
 
-
-
-
     checkWin() {
 
         const tiles = this.state.tiles;
@@ -83,10 +80,6 @@ class Game extends Component {
         }
     };
 
-
-
-
-
     componentDidMount() {
         window.addEventListener('keydown', this.handleKeyDown.bind(this), false)
         this.setState({
@@ -96,15 +89,9 @@ class Game extends Component {
         this.checkIfUser(this.state.userId)
     }; //Adds event listener and setsState of gameboard
 
-
-
-
     componentWillUnmount() {
         window.removeEventListener('keydown', this.handleKeyDown.bind(this), false)
     };
-
-
-
 
     fireTimer() {
         const App = this;
@@ -114,9 +101,6 @@ class Game extends Component {
         }, 500)
     }; //Check for fire
 
-
-
-
     eachFire() {
         const App = this;
         const fireTiles = this.state.tiles.filter(tile => tile.fire === true);
@@ -125,10 +109,6 @@ class Game extends Component {
             return App.clearFire(tile);
         })
     }; //For each fire run clearFire with current tile info
-
-
-
-
 
     clearFire(tile) {
         const tiles = this.state.tiles;
@@ -144,19 +124,12 @@ class Game extends Component {
         });
     }; //Clear fire, destroy player if inside fire
 
-
-
-
-
     bomb(bombIndex) {
         const App = this;
         window.setTimeout(function(){
             App.explosion(bombIndex)
         },3000)
     }; //Start bomb/explosion timer
-
-
-
 
 
     fourWay(bCoords) {
@@ -167,8 +140,6 @@ class Game extends Component {
         exCoords.push([{x: bCoords.x, y: bCoords.y - 1},{x: bCoords.x, y: bCoords.y - 2}])
         return exCoords;
     }; //Get explosion "radius"
-
-
 
 
     explosion(bombIndex) {
@@ -222,11 +193,6 @@ class Game extends Component {
             } //End loop
         boom.play();
     }; //End Explosion
-
-
-
-
-
 
 
     handleKeyDown(event){
@@ -303,10 +269,6 @@ class Game extends Component {
         } else return
     }; //end movement playerOne movement
 
-
-
-
-
     // saveUserData() {
     //   const data = {
     //     saved : this.state.text
@@ -319,11 +281,6 @@ class Game extends Component {
     //   }
 
 
-
-
-
-
-
     //to check whether there is a user or not
     checkIfUser() {
         if (this.state.userId) {
@@ -331,10 +288,6 @@ class Game extends Component {
             console.log("YAY! You're in!")
         }
     };
-
-
-
-
 
 
     render(){
