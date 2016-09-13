@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import ReactDOM from 'react-dom'
 import update from 'react-addons-update'
 import { browserHistory } from 'react-router';
 
@@ -18,10 +19,44 @@ class Game extends Component {
             tiles: [],
             winner: "false"
         }
+        this.bomb = this.bomb.bind(this)
+        this.eachFire = this.eachFire.bind(this)
+        this.checkWin = this.checkWin.bind(this)
+        this.handleKeyDown = this.handleKeyDown.bind(this)
     };
 
-    checkWin() {
 
+    componentDidMount() {
+        window.addEventListener('keydown', this.handleKeyDown, false)
+        this.setState({
+            tiles: createTiles()
+        });
+
+        // check for fire and win
+        this.winTimer = setInterval(this.checkWin, 500)
+
+    }; //Adds event listener and setsState of gameboard
+
+
+    componentWillUnmount() {
+        window.removeEventListener('keydown', this.handleKeyDown, false)
+        clearInterval(this.winTimer)
+    };
+
+
+
+
+
+    bomb(bombIndex) {
+        const App = this
+        setTimeout(function() {
+            App.explosion(bombIndex)
+        }, 3000)
+    }; //Start bomb/explosion timer
+
+
+
+    checkWin() {
         const tiles = this.state.tiles;
         const playerOne = tiles.filter(tile => tile.playerOne === true);
         const playerTwo = tiles.filter(tile => tile.playerTwo === true);
@@ -43,47 +78,17 @@ class Game extends Component {
         }
 
         if (this.state.winner !== "false") {
-            const App = this
             const date = new Date()
             window.sessionStorage.setItem('winner', this.state.winner)
             window.sessionStorage.setItem('date', date.getDate())
             window.sessionStorage.setItem('month', date.getMonth())
             window.sessionStorage.setItem('year', date.getFullYear())
-            clearInterval(App.fireTimerID)
+            ReactDOM.unmountComponentAtNode(document.getElementById('g'))
             browserHistory.push('/game-over')
-            // const HandleKey = this.handleKeyDown.bind(this)
-            // window.removeEventListener('keydown', HandleKey, false);
         }
     };
 
-    componentDidMount() {
-        window.addEventListener('keydown', this.handleKeyDown.bind(this), false)
-        this.setState({
-            tiles: createTiles()
-        });
-        this.fireTimer();
-    }; //Adds event listener and setsState of gameboard
 
-    componentWillUnmount() {
-        window.removeEventListener('keydown', this.handleKeyDown.bind(this), false)
-    };
-
-    fireTimer() {
-        const App = this;
-        App.fireTimerID = setInterval(function(){
-            App.eachFire();
-            App.checkWin();
-        }, 500)
-    }; //Check for fire
-
-    eachFire() {
-        const App = this;
-        const fireTiles = this.state.tiles.filter(tile => tile.fire === true);
-
-        fireTiles.map(function(tile, t){
-            return App.clearFire(tile);
-        })
-    }; //For each fire run clearFire with current tile info
 
     clearFire(tile) {
         const tiles = this.state.tiles;
@@ -99,23 +104,22 @@ class Game extends Component {
         });
     }; //Clear fire, destroy player if inside fire
 
-    bomb(bombIndex) {
-        const App = this;
-        window.setTimeout(function(){
-            App.explosion(bombIndex)
-        },3000)
-    }; //Start bomb/explosion timer
 
-    fourWay(bCoords) {
-        const exCoords = []
-        exCoords.push([{x: bCoords.x + 1, y: bCoords.y},{x: bCoords.x + 2, y: bCoords.y}])
-        exCoords.push([{x: bCoords.x - 1, y: bCoords.y},{x: bCoords.x - 2, y: bCoords.y}])
-        exCoords.push([{x: bCoords.x, y: bCoords.y + 1},{x: bCoords.x, y: bCoords.y + 2}])
-        exCoords.push([{x: bCoords.x, y: bCoords.y - 1},{x: bCoords.x, y: bCoords.y - 2}])
-        return exCoords;
-    }; //Get explosion "radius"
+
+    eachFire() {
+        clearInterval(this.fireTimer)
+        const fireTiles = this.state.tiles.filter(tile => tile.fire === true);
+        const App = this
+        fireTiles.map(function(tile, t){
+            return App.clearFire(tile);
+        })
+    }; //For each fire run clearFire with current tile info
+
+
 
     explosion(bombIndex) {
+
+        this.fireTimer = setInterval(this.eachFire, 500)
 
         const boom = new Audio("http://audiosoundclips.com/wp-content/uploads/2015/01/8-Bit-SFX_Explosion_02.mp3");
         //Provided by Jesus Lastra via audiosoundclips.com under the CC license
@@ -143,10 +147,10 @@ class Game extends Component {
                 this.setState({
                     tiles: update(this.state.tiles, {
                         [toExplode]: {
-                        fire: {$set: true},
-                        crate: {$set: false},
-                        playerOne: {$set: false},
-                        playerTwo: {$set: false}
+                            fire: {$set: true},
+                            crate: {$set: false},
+                            playerOne: {$set: false},
+                            playerTwo: {$set: false}
                         }
                     })
                 })
@@ -166,6 +170,19 @@ class Game extends Component {
             } //End loop
         boom.play();
     }; //End Explosion
+
+
+
+    fourWay(bCoords) {
+        const exCoords = []
+        exCoords.push([{x: bCoords.x + 1, y: bCoords.y},{x: bCoords.x + 2, y: bCoords.y}])
+        exCoords.push([{x: bCoords.x - 1, y: bCoords.y},{x: bCoords.x - 2, y: bCoords.y}])
+        exCoords.push([{x: bCoords.x, y: bCoords.y + 1},{x: bCoords.x, y: bCoords.y + 2}])
+        exCoords.push([{x: bCoords.x, y: bCoords.y - 1},{x: bCoords.x, y: bCoords.y - 2}])
+        return exCoords;
+    }; //Get explosion "radius"
+
+
 
     handleKeyDown(event) {
         if (event.code === "KeyW" || event.code === "KeyE" || event.code === "KeyA" || event.code === "KeyD" || event.code === "KeyS") {
@@ -241,6 +258,8 @@ class Game extends Component {
         } else return
     }; //end movement playerOne movement
 
+
+
     render() {
         return(
             <div>
@@ -257,4 +276,17 @@ class Game extends Component {
 
 }
 
-export default Game;
+class Wrapper extends Component {
+
+    componentDidMount() {
+        ReactDOM.render(<Game />, document.getElementById('g'))
+    }
+
+    render() {
+        return (
+            <div id="g"></div>
+        )
+    }
+}
+
+export default Wrapper;

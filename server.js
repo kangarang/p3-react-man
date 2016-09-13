@@ -1,17 +1,25 @@
-const PORT = process.env.PORT || 8080;
-const express = require('express');
-const cors = require('cors');
-const app = express();
-const path = require('path');
+const express = require('express')
+const cors = require('cors')
+const bodyParser = require('body-parser')
 
-app.use(cors());
+const path = require('path')
+const app = express()
+/* server configuration */
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({ extended: true }))
+app.use(cors())
 
+
+/* static route */
 app.use(express.static(__dirname + '/public'))
 
+/* config for browser history in react */
 app.get('*', (req, res) =>
-    res.sendFile(path.resolve(__dirname, 'public', 'index.html'))
+    res.sendFile(path.resolve(__dirname, 'index.html'))
 )
 
-app.listen(PORT, function() {
-    console.log(PORT);
+
+const server = app.listen(process.env.PORT || 8080, () => {
+    const port = server.address().port
+    console.log('app listening on port: ', port)
 })

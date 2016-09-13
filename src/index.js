@@ -20,6 +20,7 @@ ReactDOM.render (
             <Route path="/react-man" component={ReactMan}>
                 <Route path="/high-scores" component={HighScores} />
                 <Route path="/game" component={Game} />
+                {/* change this to index route and change all pushes to /react-man */}
                 <Route path="/game-over" component={GameOver} />
             </Route>
 
