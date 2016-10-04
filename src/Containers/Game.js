@@ -121,7 +121,7 @@ class Game extends Component {
 
         this.fireTimer = setInterval(this.eachFire, 500)
 
-        const boom = new Audio("http://audiosoundclips.com/wp-content/uploads/2015/01/8-Bit-SFX_Explosion_02.mp3");
+        const boom = new Audio("https://audiosoundclips.com/wp-content/uploads/2015/01/8-Bit-SFX_Explosion_02.mp3");
         //Provided by Jesus Lastra via audiosoundclips.com under the CC license
         const tiles = this.state.tiles;
         const showMe = this.fourWay(tiles[bombIndex]);
