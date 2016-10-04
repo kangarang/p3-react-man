@@ -4,12 +4,12 @@ import help from '../utils/helpers.js'
 import {browserHistory} from 'react-router'
 
 class GameOver extends Component {
-    constructor(props){
-        super(props)
-        this.state = {
-            text: ""
-        }
-    }
+    // constructor(props){
+    //     super(props)
+    //     this.state = {
+    //         text: ""
+    //     }
+    // }
 
     handleSubmit(e) {
         e.preventDefault()

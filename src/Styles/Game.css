@@ -1,14 +1,10 @@
-.tileContainer {
-  max-width: 65vw;
-  height: 100%;
+.displayUser {
+  background-color: black;
+  color: cornflowerblue;
+  margin: 0;
+  padding: 5px;
 }
 
-.displayUser {
-    background-color: black;
-    color: cornflowerblue;
-    margin: 0;
-    padding: 5px;
-}
 .links {
   background-color: black;
   height: 100%;
@@ -17,13 +13,62 @@
   margin-right: 3%;
 }
 
+
+
+
+
+
+
+
+
 .game {
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 80vh;
+  width: 100vw;
+  height: 100%;
 }
+
+.opacity {
+  height: 100vh;
+  width: 100vw;
+  background-color: black;
+  opacity: 0.8;
+  z-index: 1;
+  position: fixed;
+}
+
+.wrapMe {
+    width: 100%;
+    padding-bottom: 66.66%;
+    z-index: 1;
+    position: relative;
+}
+
+.content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+}
+
+.tileContainer {
+    height: 100%;
+    width: 70%;
+}
+
+
+
+
+
+
+
+
+
+
 
 
 .grass {
@@ -38,6 +83,7 @@
   height: 100%;
   width: 100%;
 }
+
 .Sicon {
   height: 100%;
   width: 100%;
@@ -51,28 +97,29 @@
   float: left;
 }
 
-.playerOne{
+.playerOne {
   background: green;
   height: 11%;
   width: 11%;
   float: left;
 }
 
-.crate{
+.crate {
   background-image: url('http://i.imgur.com/8VvWcuc.jpg');
   background-size: cover;
   height: 11%;
   width: 11%;
   float: left;
 }
-.bomb{
+
+.bomb {
   background-image: url('http://i.imgur.com/8VvWcuc.jpg');
   background-size: cover;
   height: 100%;
   width: 60%;
 }
 
-.iconCrate{
+.iconCrate {
   height: 98%;
   width: 98%;
   float: left;

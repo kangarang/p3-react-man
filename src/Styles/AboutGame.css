@@ -9,20 +9,21 @@
 }
 
 .about-header {
-  background-color: black;
-  color: cornflowerblue;
-  width: 100vw;
+    background-color: black;
+    color: cornflowerblue;
+    width: 100vw;
 }
 
 .atvContainer {
-    display: flex;
     width: 100vw;
-    height: 100vh;
+    height: 100%;
+    display: flex;
     justify-content: center;
     align-items: center;
 }
 
+
 .atv {
-    height: 70%;
-    width: 80%;
+    height: 60vh;
+    width: 70vw;
 }

@@ -65,7 +65,7 @@ class HighScores extends Component {
                 <h2 className="top">High Scores</h2>
                 <div className="HighScores">
                     <div className="butt">
-                        <Button onClick={(e) => this.show(e)}>Show Scores</Button>
+                        {/* <Button onClick={(e) => this.show(e)}>Show Scores</Button> */}
                     </div>
                     {this.state.scores.map( (single, index) => this.showScores(single, index))}
                 </div>

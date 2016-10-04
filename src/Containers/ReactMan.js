@@ -5,7 +5,7 @@ import NavLink from '../utils/NavLink'
 class ReactMan extends Component {
     render() {
         return (
-            <div>
+            <div className="ReactMan">
                 <div className="navContainer">
                     <NavLink className="links" to='/high-scores' onlyActiveOnIndex>HighScores</NavLink>
                     <NavLink className="links" to="/game" onlyActiveOnIndex>Play the game</NavLink>

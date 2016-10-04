@@ -1,13 +1,19 @@
 {
   "name": "react-man",
   "version": "0.1.0",
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/kangarang/react-man.git"
+  },
   "engines": {
     "node": "6.3.1",
     "npm": "3.10.6"
   },
   "main": "index.js",
   "devDependencies": {
-    "react-scripts": "0.2.1"
+    "react-scripts": "0.4.3",
+    "suitcss-preprocessor": "^2.0.0"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -21,7 +27,8 @@
     "react-atv-img": "^0.1.1",
     "react-bootstrap": "^0.30.2",
     "react-dom": "^15.2.1",
-    "react-router": "^2.6.1"
+    "react-router": "^2.6.1",
+    "suitcss": "^2.0.0"
   },
   "scripts": {
     "start": "node server.js",

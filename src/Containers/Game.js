@@ -33,7 +33,7 @@ class Game extends Component {
         });
 
         // check for fire and win
-        this.winTimer = setInterval(this.checkWin, 500)
+        this.winTimer = setInterval(this.checkWin, 1000)
 
     }; //Adds event listener and setsState of gameboard
 
@@ -83,7 +83,7 @@ class Game extends Component {
             window.sessionStorage.setItem('date', date.getDate())
             window.sessionStorage.setItem('month', date.getMonth())
             window.sessionStorage.setItem('year', date.getFullYear())
-            ReactDOM.unmountComponentAtNode(document.getElementById('g'))
+            ReactDOM.unmountComponentAtNode(document.getElementById('gameMount'))
             browserHistory.push('/game-over')
         }
     };
@@ -265,9 +265,18 @@ class Game extends Component {
             <div>
                 <div className="displayUser">
                     <h4>Welcome to REACT MAN!</h4>
+                    <h6>Player 1 controls: left-right-up-down  bomb: space</h6>
+                    <h6>Player 2 controls: w-a-s-d  bomb: e</h6>
                 </div>
                 <div className="game">
-                    <TileContainer tiles={this.state.tiles} />
+                    <div className="opacity"></div>
+                    <div className="wrapMe">
+                        <div className="content">
+                            <TileContainer tiles={this.state.tiles} />
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
         )
@@ -279,12 +288,12 @@ class Game extends Component {
 class Wrapper extends Component {
 
     componentDidMount() {
-        ReactDOM.render(<Game />, document.getElementById('g'))
+        ReactDOM.render(<Game />, document.getElementById('gameMount'))
     }
 
     render() {
         return (
-            <div id="g"></div>
+            <div id="gameMount"></div>
         )
     }
 }
