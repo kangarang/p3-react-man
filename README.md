@@ -42,4 +42,4 @@ About-Game Effect
   - By https://www.npmjs.com/~herrkris
 
 All other icons and imagery
-  - http://www.shutterstock.com/
+  - https://www.shutterstock.com/
