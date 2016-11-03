@@ -8,7 +8,6 @@ import Bomb from '../Tiles/Bomb.js';
 import Fire from '../Tiles/Fire.js';
 import POneBomb from '../Tiles/POneBomb.js';
 import PTwoBomb from '../Tiles/PTwoBomb.js';
-import '../Styles/Game.css';
 
 class TileContainer extends Component {
 
@@ -37,11 +36,14 @@ class TileContainer extends Component {
     }; // Renders board depending on state of the game board. Uses single purpose stateless functions to render.
 
     render() {
+        const tileContainer = {
+            width: "100%"
+        }
         return(
-            <div className="tileContainer">{this.props.tiles.length ? this.renderBoard() : null}</div>
+            <div style={tileContainer}>{this.props.tiles.length ? this.renderBoard() : null}</div>
         ) //If board had length(tile func has completed), render board.
     };
 
-}
+};
 
 export default TileContainer;

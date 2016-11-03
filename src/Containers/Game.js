@@ -8,8 +8,6 @@ import movement from '../utils/Movement.js';
 
 import TileContainer from './TileContainer.js';
 
-import '../Styles/Game.css';
-
 
 class Game extends Component {
 
@@ -259,17 +257,51 @@ class Game extends Component {
 
 
     render() {
+
+        const styles = {
+            container: {
+                width: "100vw",
+                height: '90vh',
+                background: "rgba(0, 0, 0, 0.8)"
+            },
+            display: {
+                width: "100vw",
+                padding: '15px',
+                color: 'cornflowerblue',
+                backgroundColor: 'black',
+            },
+            welcome: {
+                fontSize: '24px'
+            },
+            controls: {
+                fontSize: '16px'
+            },
+            game: {
+                display: 'flex',
+                justifyContent: "space-around",
+                alignItems: "flex-start",
+
+            },
+            wrapper: {
+                width: "60%"
+            },
+            content: {
+                width: "600px",
+                height: "auto",
+                display: 'flex',
+                justifyContent: 'space-around',
+            },
+        }
         return(
-            <div>
-                <div className="displayUser">
-                    <h4>Welcome to REACT MAN!</h4>
-                    <h6>Player 1 controls: left-right-up-down  bomb: space</h6>
-                    <h6>Player 2 controls: w-a-s-d  bomb: e</h6>
+            <div style={styles.container}>
+                <div style={styles.display}>
+                    <div style={styles.welcome}>Welcome to REACT MAN!</div>
+                    <div style={styles.controls}>Player 1 controls: left-right-up-down  bomb: space</div>
+                    <div style={styles.controls}>Player 2 controls: w-a-s-d  bomb: e</div>
                 </div>
-                <div className="game">
-                    <div className="opacity"></div>
-                    <div className="wrapMe">
-                        <div className="content">
+                <div style={styles.game}>
+                    <div style={styles.wrapper}>
+                        <div style={styles.content}>
                             <TileContainer tiles={this.state.tiles} />
 
                         </div>

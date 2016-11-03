@@ -5,7 +5,7 @@
     align-items: center;
     background-repeat: no-repeat;
     width: 100%;
-    height: 100%;
+    /*height: 100%;*/
 }
 
 .about-header {
@@ -16,7 +16,7 @@
 
 .atvContainer {
     width: 100vw;
-    height: 100%;
+    /*height: 100%;*/
     display: flex;
     justify-content: center;
     align-items: center;
@@ -24,6 +24,6 @@
 
 
 .atv {
-    height: 60vh;
-    width: 70vw;
+    height: 600px;
+    width: 800px;
 }
