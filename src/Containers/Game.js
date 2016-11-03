@@ -45,8 +45,6 @@ class Game extends Component {
 
 
 
-
-
     bomb(bombIndex) {
         const App = this
         setTimeout(function() {
