@@ -9,6 +9,7 @@ class AboutGame extends Component {
 				display: 'flex',
 			    justifyContent: 'space-around',
 			    alignItems: 'center',
+				minHeight: "80vh",
 			},
 			atv: {
 				height: '600px',

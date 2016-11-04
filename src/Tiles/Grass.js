@@ -1,6 +1,12 @@
-import '../Styles/Game.css'
 import React from 'react';
 
 export default (props) => {
-    return <div className="grass"></div>
+    const styles = {
+        grass: {
+            height: "100%",
+            width: "100%",
+        },
+
+    }
+    return <div style={styles.grass}></div>
 }

@@ -11,6 +11,7 @@ class AboutMakers extends Component {
                 backgroundSize: "cover",
 				color: 'cornflowerblue',
 				width: '100%',
+				minHeight: "80vh",
 			},
             wrapper: {
                 marginTop: '10px',

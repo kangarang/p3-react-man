@@ -31,14 +31,13 @@ class App extends Component {
                 width: '33%'
             },
 			bottom: {
-                height: "90vh",
+                minHeight: "80vh",
 				display: 'flex',
-                background: "url('https://media1.giphy.com/avatars/haydiroket.gif')",
-				backgroundRepeat: "repeat",
-                borderTop: '3px solid cornflowerblue',
-				// backgroundRepeat: "no-repeat",
-				backgroundSize: "cover",
-                marginTop: '10px'
+				borderTop: '3px solid cornflowerblue',
+                marginTop: '10px',
+				background: "url('https://media1.giphy.com/avatars/haydiroket.gif')",
+                backgroundRepeat: "repeat-y",
+                backgroundSize: "cover",
 			}
 		}
 		return (

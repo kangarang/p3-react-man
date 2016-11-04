@@ -1,6 +1,12 @@
-import '../Styles/Game.css'
 import React from 'react';
 
 export default (props) => {
-    return <div className="grass"><img role="presentation" className="Sicon" src="http://i.imgur.com/YZo9IMF.png"></img></div>
+    const styles = {
+        icon: {
+            height: "100%",
+            width: "80%"
+        }
+
+    }
+    return <img role="presentation" style={styles.icon} src="http://i.imgur.com/YZo9IMF.png"></img>
 }
